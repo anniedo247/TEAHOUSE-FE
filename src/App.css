@@ -1,2 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 /*font-family: 'Dancing Script', cursive;*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+/*font-family: 'Roboto Condensed', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+/*font-family: 'Lexend', sans-serif;*/
+* {
+	box-sizing: border-box;
+}
+
+
+/*-------searchBar--------*/
+.bg-custom {
+  background-color:white;
+}
+.hamburger-button {
+	color: black !important;
+	border-radius: 50% !important;
+	border: 1px solid white !important;
+	padding: 5px !important;
+}
+.search-bar {
+	flex-grow: 1;
+	position: relative;
+	margin-left: 40px;
+	margin-right:40px;
+  position: relative;
+}
+.search-bar-input {
+	/* border-radius: 30px; */
+	border: none;
+	border-bottom: 1px solid rgb(84, 84, 84);
+	padding: 10px 40px 10px 0px;
+	width: 210px;
+
+}
+
+.search-bar-input:focus {
+	outline: none;
+}
+/*-------NavBar--------*/
+.nav-menu {
+  margin-right: 40px;
+  color: black !important;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.07em;
+}
+.nav-icon {
+  margin-right: 20px;
+}
+/*-----register-----*/
+.error-msg {
+  color :red;
+  font-size: 14px;
+  height: 8px;
+  margin-bottom: 20px;
+}
+.auth-button {
+  width: 100%;
+  color: white;
+  background-color: black;
+  border: none;
+  font-family: 'Lexend', sans-serif;
+  letter-spacing: 0.05em;
+}
+.auth-button:hover{
+  background-color:  #98a86d;
+  color: white;
+  border: none;
+}
+
+.drink-header {
+  background-image: url("");
+}
