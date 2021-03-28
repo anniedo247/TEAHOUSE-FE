@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const SearchBar = ({onSubmit,onChange}) => {
+const SearchBar = ({onSubmit,onChange,searchInput}) => {
   
 
   return (
@@ -10,6 +10,7 @@ const SearchBar = ({onSubmit,onChange}) => {
       <form onSubmit={onSubmit}>
         <input
           onChange={onChange}
+          value={searchInput}
           placeholder=" SEARCH"
           className="search-bar-input"
         />

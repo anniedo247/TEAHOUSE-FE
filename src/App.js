@@ -9,7 +9,11 @@ import {useDispatch} from "react-redux"
 function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
-    dispatch(authActions.getCurrentUser())
+    const token = localStorage.getItem("token")
+    if (token) {dispatch(authActions.getCurrentUser())}
+    else {
+        dispatch(authActions.logout())
+    }
   },[])
   return (
     <div className="App">

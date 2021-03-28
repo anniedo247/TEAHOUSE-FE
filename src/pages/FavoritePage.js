@@ -8,18 +8,17 @@ import {useHistory} from "react-router-dom";
 
 
 
-const DrinkPages = () => {
+const FavoritePage = () => {
   const dispatch = useDispatch();
   const history = useHistory()
   const products = useSelector((state) => state.product.products);
   const totalPages = useSelector((state) => state.product.totalPages);
   const [pageNum, setPageNum] = useState(1);
   const limit = 6;
-  const [category,setCategory] = useState("drink")
 
   useEffect(() => {
-    dispatch(productActions.getAllProducts(pageNum,limit,category));
-  }, [dispatch,pageNum,limit,category]);
+    dispatch(productActions.getAllFavoriteProducts(pageNum,limit));
+  }, [dispatch,pageNum,limit]);
     
   
   // const handleClick = () =>{
@@ -33,14 +32,8 @@ const DrinkPages = () => {
 
   return (
     <div>
-    <Container fluid className="text-center drink-header">
-        <h1 className="header-title">DRINK</h1>
-        <ul className="menu-list">
-          <button className='header-menu-item' value="drink" onClick={(e)=>setCategory(e.target.value)} >ALL</button>
-          <button className='header-menu-item' value="fruit tea" onClick={(e)=>setCategory(e.target.value)} >FRUIT TEA</button>
-          <button className='header-menu-item' value="flavored tea" onClick={(e)=>setCategory(e.target.value)}>FLAVORED TEA</button>
-          <button className='header-menu-item' value="tea latte" onClick={(e)=>setCategory(e.target.value)}>TEA LATTE</button>
-        </ul>
+    <Container fluid className="text-center favorite-header">
+        <h1 className="header-title">FAVORITE</h1>
     </Container>
     <Container className="py-5 d-flex justify-content-center">
       <Row>
@@ -55,4 +48,5 @@ const DrinkPages = () => {
   );
 };
 
-export default DrinkPages;
+export default FavoritePage;
+
