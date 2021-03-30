@@ -38,15 +38,7 @@ const ProductDetails = () => {
     setRating(rating);
   };
 
-  // const onFavoriteHandler = (id) =>{
-  //   // console.log("heart",id)
-  //   // if(product.isFavorite === false) {
-  //   //   dispatch(productActions.addToFavorite(id))
-  //   // } 
-  //     console.log("remove",id)
-  //     dispatch(productActions.removeFromFavorite(id))
-    
-  // }
+  
 
   const onSubmitReview = (e) => {
     e.preventDefault();
@@ -134,7 +126,7 @@ const ProductDetails = () => {
                         value="medium"
                         onChange={(e) => setSize(e.target.value)}
                       />
-                      <label className="ml-2" for="medium">Medium</label>
+                      <label className="ml-2" for="medium">Medium(+5,000 VND)</label>
                     </Col>
                     <Col>
                       <input
@@ -145,7 +137,7 @@ const ProductDetails = () => {
                         value="large"
                         onChange={(e) => setSize(e.target.value)}
                       />
-                      <label className="ml-2" >Large</label>
+                      <label className="ml-2" >Large(+10,000 VND)</label>
                     </Col>
                   </Row>
                   <Row>

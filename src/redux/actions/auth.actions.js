@@ -44,6 +44,16 @@ const getCurrentUser = () => async (dispatch) => {
     dispatch({ type: types.GET_CURRENT_USER_FAILURE, payload: error });
   }
 };
+const updateProfile = (name, avatarUrl) => async (dispatch) => {
+  dispatch({ type: types.UPDATE_CURRENT_USER_PROFILE_REQUEST, payload: null });
+  try {
+    const res = await api.put("/users/me", { name, avatarUrl });
+    dispatch({ type: types.UPDATE_CURRENT_USER_PROFILE_SUCCESS, payload: res.data.data });
+    toast.success(`Your profile has been updated.`);
+  } catch (error) {
+    dispatch({ type: types.UPDATE_CURRENT_USER_PROFILE_FAILURE, payload: error });
+  }
+};
 
 const logout = () => (dispatch) => {
   delete api.defaults.headers.common["Authorization"];
@@ -55,6 +65,7 @@ const authActions = {
   register,
   login,
   getCurrentUser,
+  updateProfile,
   logout
 }
 export default authActions;

@@ -8,6 +8,8 @@
 /*font-family: 'EB Garamond', serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 /*font-family: 'Open Sans', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+/*font-family: 'Montserrat', sans-serif;*/
 
 * {
   box-sizing: border-box;
@@ -116,6 +118,22 @@
   height: 400px;
   color: white;
 }
+.admin-product-header {
+	background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616986344/teaHouse/photo-1437315306147-0923bdb3fc12_hqkqbb.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+	background-position: center;
+  height: 400px;
+  color: white;
+}
+.shipping-header {
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617035390/teaHouse/photo-1558160074-4d7d8bdf4256_nkvi98.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+	background-position: center;
+  height: 400px;
+  color: white;
+}
 .header-title {
   font-size: 70px;
   letter-spacing: 0.05em;
@@ -145,7 +163,7 @@
 	
 }
 
-/*----- product cart ----*/
+/*----- product card ----*/
 .product-card {
   width: 300px;
   display: flex;
@@ -435,7 +453,7 @@ border: none;
   left: 0;
   z-index: 100; /* Behind the navbar */
   min-height: 100vh !important;
-  padding: 0;
+  padding: 0; 
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
@@ -458,4 +476,82 @@ border: none;
     position: -webkit-sticky;
     position: sticky;
   }
+}
+/*---User Profile----*/
+.edit-avatar-product-bt {
+	background-color: transparent;
+	color: black;
+	border: 1px solid rgb(159, 159, 159);
+	font-family:"Roboto Condensed", sans-serif ;
+	letter-spacing: 0.15em;
+}
+.edit-avatar-product-bt:hover {
+	background-color:  #98a86d;
+	border:none;
+}
+.btn-primary:disabled {
+	color: #fff;
+	background-color: #98a86d;
+	border-color: #98a86d;
+}
+
+.avatar_pf{
+	
+	vertical-align: middle;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+/*----cart-----*/
+.cart-add-quantity-box {
+  border: 1px solid black;
+  width: fit-content;
+  /* font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px; */
+}
+.cart-add-quantity-box > input {
+  width: 40px;
+  height: 35px;
+  text-align: center;
+  border: none;
+}
+.cart-add-quantity-box > button {
+  border: none;
+  background-color: transparent;
+  width: 40px;
+  text-align: center;
+}
+.checkout-btn {
+  background-color: #98a86d;
+	color: white;
+	border: 1px solid #98a86d;
+	font-family:"Roboto Condensed", sans-serif ;
+	letter-spacing: 0.15em;
+  padding: 10px 20px;
+}
+.checkout-btn:hover{
+  background-color: #98a86d;
+	border: 1px solid #98a86d;
+
+}
+
+/*----admin page----*/
+.create-product-button {
+	background-color: transparent;
+	color: black!important;
+	border: 1px solid rgb(159, 159, 159);
+	font-family:"Roboto Condensed", sans-serif ;
+	letter-spacing: 0.15em;
+}
+.create-product-button:hover {
+	background-color: #98a86d;
+	color: white!important;
+	border: 1px solid #98a86d;
+}
+.table-hover tbody tr:hover td {
+	background:#98a86d;
+}
+.icon:hover{
+	color:white
 }

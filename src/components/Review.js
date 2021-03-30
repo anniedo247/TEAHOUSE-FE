@@ -7,10 +7,18 @@ import { useParams } from "react-router-dom";
 
 import reviewActions from "../redux/actions/review.actions";
 
-
-const Review = ({ product,rating,changeRating,reviewBody,reviewTitle,onChangeTitle,onChangeBody,onSubmitReview}) => {
+const Review = ({
+  product,
+  rating,
+  changeRating,
+  reviewBody,
+  reviewTitle,
+  onChangeTitle,
+  onChangeBody,
+  onSubmitReview,
+}) => {
   // const dispatch = useDispatch();
-  
+
   // const [rating, setRating] = useState(0);
   // const [reviewTitle, setReviewTitle] = useState("");
   // const [reviewBody, setReviewBody] = useState("");
@@ -24,7 +32,14 @@ const Review = ({ product,rating,changeRating,reviewBody,reviewTitle,onChangeTit
   return (
     <Container>
       <div>
-        <h3 style={{fontFamily:"'Roboto Condensed', sans-serif",letterSpacing:"0.15em"}}>REVIEWS</h3>
+        <h3
+          style={{
+            fontFamily: "'Roboto Condensed', sans-serif",
+            letterSpacing: "0.15em",
+          }}
+        >
+          REVIEWS
+        </h3>
         {product && product.reviews.length === 0 ? (
           <span>There are no reviews yet</span>
         ) : (
@@ -35,10 +50,16 @@ const Review = ({ product,rating,changeRating,reviewBody,reviewTitle,onChangeTit
                 className="d-flex"
                 style={{ borderBottom: "1px solid gray" }}
               >
-                <img
-                  className="review-avatar"
-                  src="https://res.cloudinary.com/dbxawxez9/image/upload/v1616605635/teaHouse/default-avatar-profile-icon-vector-18942381_gnukwe.jpg"
-                />
+                {" "}
+                {r.user.images ? (
+                  <img className="review-avatar" src={r.images[0]} />
+                ) : (
+                  <img
+                    className="review-avatar"
+                    src="https://res.cloudinary.com/dbxawxez9/image/upload/v1616605635/teaHouse/default-avatar-profile-icon-vector-18942381_gnukwe.jpg"
+                  />
+                )}
+                
                 <div className="ml-4">
                   <StarRatings
                     rating={r.rating}
@@ -49,26 +70,62 @@ const Review = ({ product,rating,changeRating,reviewBody,reviewTitle,onChangeTit
                     name="rating"
                   />
                   <div className="d-flex">
-                    <h5 style={{fontFamily:"'Roboto Condensed', sans-serif",letterSpacing:"0.1em"}}>{r.user.name} - </h5> 
-                    <span><Moment format="MM/DD/YYYY">{r.createdAt}</Moment></span>
+                    <h5
+                      style={{
+                        fontFamily: "'Roboto Condensed', sans-serif",
+                        letterSpacing: "0.1em",
+                      }}
+                    >
+                      {r.user.name} -{" "}
+                    </h5>
+                    <span>
+                      <Moment format="MM/DD/YYYY">{r.createdAt}</Moment>
+                    </span>
                   </div>
-                  <h6 style={{fontFamily:"'Open Sans', sans-serif",fontWeight:"bolder"}}>{r.title}</h6>
-                  <p style={{fontFamily:"'Open Sans', sans-serif"}}>{r.body}</p>
+                  <h6
+                    style={{
+                      fontFamily: "'Open Sans', sans-serif",
+                      fontWeight: "bolder",
+                    }}
+                  >
+                    {r.title}
+                  </h6>
+                  <p style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                    {r.body}
+                  </p>
                 </div>
               </div>
             </div>
           ))
         )}
       </div>
-      <div style={{marginTop:"10px"}}>
+      <div style={{ marginTop: "10px" }}>
         {product && product.reviews.length === 0 ? (
-          <span style={{fontFamily:"'Roboto Condensed', sans-serif",letterSpacing:"0.1em",fontSize:"20px"}}>BE THE FIRST TO REVIEW "{product.name}"</span>
+          <span
+            style={{
+              fontFamily: "'Roboto Condensed', sans-serif",
+              letterSpacing: "0.1em",
+              fontSize: "20px",
+            }}
+          >
+            BE THE FIRST TO REVIEW "{product.name}"
+          </span>
         ) : (
-          <span style={{fontFamily:"'Roboto Condensed', sans-serif",letterSpacing:"0.1em",fontSize:"20px"}}>WRITE YOUR REVIEW</span>
+          <span
+            style={{
+              fontFamily: "'Roboto Condensed', sans-serif",
+              letterSpacing: "0.1em",
+              fontSize: "20px",
+            }}
+          >
+            WRITE YOUR REVIEW
+          </span>
         )}
-        <p style={{fontFamily:"'Open Sans', sans-serif",marginTop:"10px"}}>Your email address will not be published.</p>
+        <p style={{ fontFamily: "'Open Sans', sans-serif", marginTop: "10px" }}>
+          Your email address will not be published.
+        </p>
       </div>
-      <div style={{width:"50%"}}>
+      <div style={{ width: "50%" }}>
         <Form onSubmit={onSubmitReview}>
           <Form.Group>
             <StarRatings
@@ -83,7 +140,9 @@ const Review = ({ product,rating,changeRating,reviewBody,reviewTitle,onChangeTit
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label style={{fontFamily:"'Open Sans', sans-serif"}}>Your review title</Form.Label>
+            <Form.Label style={{ fontFamily: "'Open Sans', sans-serif" }}>
+              Your review title
+            </Form.Label>
             <Form.Control
               type="text"
               name="title"
@@ -92,7 +151,9 @@ const Review = ({ product,rating,changeRating,reviewBody,reviewTitle,onChangeTit
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label style={{fontFamily:"'Open Sans', sans-serif"}}>Your review</Form.Label>
+            <Form.Label style={{ fontFamily: "'Open Sans', sans-serif" }}>
+              Your review
+            </Form.Label>
             <Form.Control
               as="textarea"
               rows={4}
@@ -101,7 +162,13 @@ const Review = ({ product,rating,changeRating,reviewBody,reviewTitle,onChangeTit
               onChange={onChangeBody}
             />
           </Form.Group>
-          <Button style={{fontFamily:"'Open Sans', sans-serif"}} className="submit-review-btn" type="submit">SUBMIT</Button>
+          <Button
+            style={{ fontFamily: "'Open Sans', sans-serif" }}
+            className="submit-review-btn"
+            type="submit"
+          >
+            SUBMIT
+          </Button>
         </Form>
       </div>
     </Container>

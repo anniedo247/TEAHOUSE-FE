@@ -66,7 +66,7 @@ const addProduct = ({
       images,
       categories,
     });
-    console.log("create", res.data);
+    console.log("create", res.data.data.categories);
     dispatch({ type: types.CREATE_PRODUCT_SUCCESS, payload: res.data.data });
     toast.success("Product created");
   } catch (error) {

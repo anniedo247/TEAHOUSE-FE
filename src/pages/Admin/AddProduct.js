@@ -19,6 +19,9 @@ const AddProduct = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    newProduct.categories = newProduct.categories.split(",").map(function(item) {
+      return item.trim();
+    });
     dispatch(productActions.addProduct(newProduct));
   };
 

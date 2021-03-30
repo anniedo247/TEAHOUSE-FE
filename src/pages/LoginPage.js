@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Form as BootstrapForm, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,17 +8,26 @@ import { Redirect } from "react-router-dom";
 import authActions from "../redux/actions/auth.actions";
 import * as yup from "yup";
 
-const LoginPage = () => {
+const LoginPage = ({location,history}) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.auth.loading);
+  const user = useSelector((state)=> state.auth.user);
+  
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  useEffect(() => {
+    if (user) {
+      history.push(redirect)
+    }
+  }, [history, user, redirect])
 
   const loginSchema = yup.object({
     email: yup.string().required("Require").email("Email must be valid"),
     password: yup.string().required("Require"),
   });
 
-  if (isAuthenticated) return <Redirect to="/" />;
+  //if (isAuthenticated) return <Redirect to="/" />;
   return (
     <div>
       {loading ? (

@@ -38,6 +38,13 @@ const authReducer = (state = initialState, action) => {
         return { ...state, isAuthenticated: true, loading: false, user: payload.user };
       case types.GET_CURRENT_USER_FAILURE:
         return { ...state, isAuthenticated:false,loading: false };
+    //UPDATE USER PROFILE
+    case types.UPDATE_CURRENT_USER_PROFILE_REQUEST:
+      return {...state, loading: true};
+    case types.UPDATE_CURRENT_USER_PROFILE_SUCCESS:
+      return {...state,loading: false, user:{...state.user, payload}}
+    case types.UPDATE_CURRENT_USER_PROFILE_FAILURE:
+      return {...state, loading: false}
 
     //logout
     case types.LOGOUT:

@@ -15,6 +15,14 @@ const orderReducer = (state = initialState, action) =>{
       return {...state, orders: payload.orders, loading: false};
     case types.GET_ORDERS_FAILURE:
       return {...state, loading: false};
+    //CREATE ORDER
+    case types.CREATE_ORDER_REQUEST:
+      return {...state,loading: true};
+    case types.CREATE_ORDER_SUCCESS:
+      return {...state,loading: false}
+    case types.CREATE_ORDER_FAILURE:
+      return {...state,loading: false}
+
     default:
       return state;
   }

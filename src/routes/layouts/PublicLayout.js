@@ -13,6 +13,10 @@ import RegisterPage from "../../pages/RegisterPage";
 import DrinkPages from "../../pages/DrinkPages";
 import ProductDetails from "../../pages/ProductDetails";
 import Cart from "../../pages/Cart"
+import Shipping from "../../pages/Shipping";
+import Payment from "../../pages/Payment"
+import PlaceOrder from "../../pages/PlaceOrder";
+import OrderDone from "../../pages/OrderDone"
 
 const PublicLayout = () => {
   return (
@@ -27,6 +31,11 @@ const PublicLayout = () => {
           <Route exact path="/drink" component={DrinkPages}/>
           <Route exact path="/products/:productId" component={ProductDetails}/>
           <Route exact path="/cart/:productId?" component={Cart}/>
+          <PrivateRoute exact path="/shipping" component={Shipping}/>
+          <PrivateRoute exact path="/payment" component={Payment}/>
+          <PrivateRoute exact path="/placeorder" component={PlaceOrder}/>
+          <PrivateRoute exact path="/placeordersuccess" component={OrderDone}/>
+
           <Route component={NotFoundPage} />
         </Switch>
       </Container>

@@ -75,7 +75,7 @@ const PublicNavbar = () => {
         transform: "translateY(-50%)",
       }}
     >
-      <Link className="nav-icon" to="/users/me">
+      <Link className="nav-icon" to="/users/me/profile">
         <FontAwesomeIcon icon={faUser} size="lg" color="black" />
       </Link>
       <span>{user?.name}</span>

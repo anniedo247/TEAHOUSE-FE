@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col, ListGroup } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
+import { useParams,useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import cartActions from "../redux/actions/cart.actions";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const Cart = ({ location }) => {
-  const { productId } = useParams();
+const Cart = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
@@ -17,6 +17,16 @@ const Cart = ({ location }) => {
     dispatch(cartActions.removeFromCart(id));
   };
 
+  const handleAddQuantity = (id) => {
+    console.log("hehe", id)
+    dispatch(cartActions.addQuantity(id))
+  }
+  const handleSubQuantity = (id) => {
+    dispatch(cartActions.subtractQuantity(id))
+  }
+  const handleCheckout = () => {
+   history.push('/login?redirect=shipping')
+  }
   return (
     <div>
       
@@ -32,23 +42,24 @@ const Cart = ({ location }) => {
             Your cart is empty. <Link to="/">Go back</Link>
           </p>
         ) : (
-          <div>
+          <div className="mt-5">
             <Row>
               <Col xl={5}>
-                <span>Product</span>
+                <span style={{fontFamily:"'Roboto Condensed', sans-serif",fontSize:"25px",letterSpacing:"0.15em"}}>PRODUCTS</span>
               </Col>
               <Col xl={2}>
                 {" "}
-                <span>Price</span>
+                <span style={{fontFamily:"'Roboto Condensed', sans-serif",fontSize:"25px",letterSpacing:"0.15em"}}>PRICE</span>
               </Col>
               <Col xl={2}>
-                <span>Quantity</span>
+                <span style={{fontFamily:"'Roboto Condensed', sans-serif",fontSize:"25px",letterSpacing:"0.15em"}}>QUANTITY</span>
               </Col>
               <Col xl={2}>
-                <span>Total</span>
+                <span style={{fontFamily:"'Roboto Condensed', sans-serif",fontSize:"25px",letterSpacing:"0.15em"}}>TOTAL</span>
               </Col>
               <Col xl={1}></Col>
             </Row>
+            <hr/>
 
             {cartItems.map((item) => (
               <div
@@ -59,9 +70,9 @@ const Cart = ({ location }) => {
                   <Col xl={5}>
                     <Row>
                       <img style={{ width: "50px" }} src={item.images[0]} />{" "}
-                      <div>
+                      <div className="ml-4">
                         <h3>{item.name}</h3>
-                        <p>{item.size ? <p>size: {item.size}</p> : null}</p>
+                        <p style={{fontFamily:"'Montserrat', sans-serif"}}>{item.size ? <p>size: {item.size}</p> : null}</p>
                       </div>
                     </Row>
                   </Col>
@@ -81,31 +92,33 @@ const Cart = ({ location }) => {
                     )}
                   </Col>
                   <Col xl={2}>
-                    <input
-                      type="number"
-                      min="0"
-                      name="quantity"
-                      defaultValue={item.qty}
-                    />
+                  <div className="cart-add-quantity-box">
+                      <button onClick={()=>handleSubQuantity(item._id)}>-</button>
+                      <input
+                        name="quantity"
+                        value={item.quantity}
+                      />
+                      <button onClick={()=>handleAddQuantity(item._id)}>+</button>
+                    </div>
                   </Col>
                   <Col xl={2}>
                     {item.size === "medium" ? (
                       <div>
                         {new Intl.NumberFormat().format(
-                          item.qty * (item.price + 5000)
+                          item.quantity * (item.price + 5000)
                         )}{" "}
                         VND
                       </div>
                     ) : item.size === "large" ? (
                       <div>
                         {new Intl.NumberFormat().format(
-                          item.qty * (item.price + 10000)
+                          item.quantity * (item.price + 10000)
                         )}{" "}
                         VND
                       </div>
                     ) : (
                       <div>
-                        {new Intl.NumberFormat().format(item.qty * item.price)}{" "}
+                        {new Intl.NumberFormat().format(item.quantity * item.price)}{" "}
                         VND
                       </div>
                     )}
@@ -121,19 +134,33 @@ const Cart = ({ location }) => {
                 </Row>
               </div>
             ))}
-            
-              <div className="mr-auto">
-                <h4>SUBTOTAL</h4>
-                <h4>
-                  {cartItems.reduce((acc, item) => {
+              <Row>
+                
+                <Col><div className="text-right">
+                <h4 style={{fontFamily:"'Roboto Condensed', sans-serif",fontSize:"25px",letterSpacing:"0.15em"}}>SUBTOTAL</h4>
+                <h4 style={{fontFamily:"'Roboto Condensed', sans-serif",fontSize:"23px"}}>
+                  {new Intl.NumberFormat().format(cartItems.reduce((acc, item) => {
                     return item.size === "medium"
-                      ? acc + item.qty * (item.price + 5000)
+                      ? acc + item.quantity * (item.price + 5000)
                       : item.size === "large"
-                      ? acc + item.qty * (item.price + 10000)
-                      : acc + item.qty * item.price;
-                  }, 0)}
+                      ? acc + item.quantity * (item.price + 10000)
+                      : acc + item.quantity * item.price;
+                  }, 0))} VND
                 </h4>
+                <p style={{fontFamily:"'Montserrat', sans-serif",letterSpacing:"0.15em"}}>Shipping calculated at checkout</p>
+              </div></Col>
+              </Row>
+              <Row>
+              <Col>
+                <Link style={{fontFamily:"'EB Garamond', serif",letterSpacing:"0.15em"}} to="/"> Continue Shopping </Link>
+                </Col>
+              <Col>
+              <div className="text-right">
+              <Button onClick={handleCheckout} className="checkout-btn"> CHECK OUT</Button>
               </div>
+              </Col>
+              </Row>
+              
             
           </div>
         )}
