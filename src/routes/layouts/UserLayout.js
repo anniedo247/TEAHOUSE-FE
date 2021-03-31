@@ -8,6 +8,7 @@ import SideMenu from "../../components/SideMenu"
 import UserInfo from "../../pages/User/UserInfo";
 import UserOrders from "../../pages/User/UserOrders";
 import NotFoundPage from "../../pages/NotFoundPage"
+import Footer from "../../components/Footer";
 //import FavoritePage from "../../pages/FavoritePage";
 
 const UserLayout = () => {
@@ -34,6 +35,7 @@ const UserLayout = () => {
       </Row>
         
       </Container>
+      <Footer/>
     </>
   );
 };

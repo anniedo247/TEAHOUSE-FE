@@ -6,9 +6,10 @@
 /*font-family: 'Lexend', sans-serif;*/
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap");
 /*font-family: 'EB Garamond', serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 /*font-family: 'Open Sans', sans-serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 /*font-family: 'Montserrat', sans-serif;*/
 
 * {
@@ -82,7 +83,7 @@
   background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616833918/teaHouse/photo-1563227812-0ea4c22e6cc8_rnhkei.jpg");
   background-attachment: fixed;
   background-size: cover;
-	background-position: center;
+  background-position: center;
   height: 400px;
   color: white;
 }
@@ -90,7 +91,7 @@
   background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616859936/teaHouse/photo-1616109757712-263c97c28a4b_aro6ia.jpg");
   background-attachment: fixed;
   background-size: cover;
-	background-position: bottom;
+  background-position: bottom;
   height: 400px;
   color: black;
 }
@@ -98,31 +99,31 @@
   background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616868243/teaHouse/photo-1522160196-1a0efa63778d_fukgus.jpg");
   background-attachment: fixed;
   background-size: cover;
-	background-position: bottom;
+  background-position: bottom;
   height: 400px;
   color: white;
 }
-.shopping-cart-header{
-	background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616914512/teaHouse/biluochun-shopping-cart-trolley-chinese-leaf-green-tea-spoon-pink-background_101881-127_ywa8hh.jpg");
+.shopping-cart-header {
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616914512/teaHouse/biluochun-shopping-cart-trolley-chinese-leaf-green-tea-spoon-pink-background_101881-127_ywa8hh.jpg");
   background-attachment: fixed;
   background-size: cover;
-	background-position: top;
+  background-position: top;
   height: 400px;
   color: white;
 }
-.user-header{
-	background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616916709/teaHouse/photo-1585185160068-8175b6a39d84_inu8ox.jpg");
+.user-header {
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616916709/teaHouse/photo-1585185160068-8175b6a39d84_inu8ox.jpg");
   background-attachment: fixed;
   background-size: cover;
-	background-position: center;
+  background-position: center;
   height: 400px;
   color: white;
 }
 .admin-product-header {
-	background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616986344/teaHouse/photo-1437315306147-0923bdb3fc12_hqkqbb.jpg");
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616986344/teaHouse/photo-1437315306147-0923bdb3fc12_hqkqbb.jpg");
   background-attachment: fixed;
   background-size: cover;
-	background-position: center;
+  background-position: center;
   height: 400px;
   color: white;
 }
@@ -130,7 +131,7 @@
   background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617035390/teaHouse/photo-1558160074-4d7d8bdf4256_nkvi98.jpg");
   background-attachment: fixed;
   background-size: cover;
-	background-position: center;
+  background-position: center;
   height: 400px;
   color: white;
 }
@@ -146,7 +147,7 @@
   justify-content: center;
 }
 .header-menu-item {
-	color: white;
+  color: white;
   font-size: 25px;
   letter-spacing: 0.05em;
   font-family: "Roboto Condensed", sans-serif;
@@ -160,7 +161,6 @@
 
 * {
   box-sizing: border-box;
-	
 }
 
 /*----- product card ----*/
@@ -192,6 +192,10 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  transition-duration: 0.5s;
+}
+.product-card:hover > img {
+  transition-duration: 0.3s;
 }
 .product-card--image-top {
   opacity: 0;
@@ -203,7 +207,7 @@
 }
 .product-card:hover .product-card--image-top {
   opacity: 1;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0);
   transition-duration: 0.5s;
 }
 .heart-icon {
@@ -275,6 +279,11 @@
   cursor: pointer;
 }
 /*------product details ----*/
+.size-input {
+  font-size: 17px;
+  font-family: "Open Sans", sans-serif;
+  margin-left: 13px;
+}
 .product-details--name {
   text-transform: uppercase;
   font-family: "Roboto Condensed", sans-serif;
@@ -287,13 +296,13 @@
   margin-bottom: 20px;
 }
 .product-details--description {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
-	letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
   margin-top: 20px;
-	margin-bottom: 20px;
-  color:black;
-} 
+  margin-bottom: 20px;
+  color: black;
+}
 .add-to-wishlist {
   font-family: "EB Garamond", serif;
   font-size: 20px;
@@ -303,8 +312,9 @@
 
 input[type="radio"] {
   -webkit-appearance: none;
-  width: 15px;
-  height: 15px;
+  margin-top: 8px;
+  width: 12px;
+  height: 12px;
   border: 1px solid darkgray;
   border-radius: 50%;
   outline: none;
@@ -323,6 +333,7 @@ input[type="radio"]:before {
 }
 input[type="radio"]:checked:before {
   background: #98a86d;
+  margin-left: 2px;
 }
 
 .product-info {
@@ -332,18 +343,18 @@ input[type="radio"]:checked:before {
 .product-info--tabs {
   display: flex;
   justify-content: center;
-	font-size: 20px;
-	font-family:"Roboto Condensed", sans-serif ;
-	letter-spacing: 0.15em;
+  font-size: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.15em;
 }
 .product-details--description-tab {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 17px;
-	letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
   margin-top: 40px;
-	margin-bottom: 20px;
-  color:black;
-} 
+  margin-bottom: 20px;
+  color: black;
+}
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: #98a86d !important;
@@ -359,15 +370,15 @@ a {
   height: auto;
 }
 .submit-review-btn {
-	background-color: transparent;
-	color: black;
-	border: 1px solid rgb(159, 159, 159);
-	padding:9px 18px
+  background-color: transparent;
+  color: black;
+  border: 1px solid rgb(159, 159, 159);
+  padding: 9px 18px;
 }
-.submit-review-btn:hover{
-	background-color:  #98a86d;
-	color: white;
-	border: none;
+.submit-review-btn:hover {
+  background-color: #98a86d;
+  color: white;
+  border: none;
 }
 /* .btn-success {
 	background-color: white;
@@ -431,30 +442,28 @@ border: none;
 }
 /*----Create New Product -----*/
 .create-product-btn {
-	background-color: transparent;
-	color: black;
-	border: 1px solid rgb(159, 159, 159);
-	font-family:"Roboto Condensed", sans-serif ;
-	letter-spacing: 0.15em;
-
+  background-color: transparent;
+  color: black;
+  border: 1px solid rgb(159, 159, 159);
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.15em;
 }
 .create-product-btn:hover {
-	background-color:  #98a86d;
-	border:none;
-
+  background-color: #98a86d;
+  border: none;
 }
 /*
  * Sidebar
  */
 
- .sidebar {
+.sidebar {
   top: 0;
   bottom: 0;
   left: 0;
   z-index: 100; /* Behind the navbar */
   min-height: 100vh !important;
-  padding: 0; 
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  padding: 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 767.98px) {
@@ -466,7 +475,7 @@ border: none;
 .sidebar-sticky {
   top: 0;
   height: calc(100vh - 48px);
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
@@ -479,25 +488,24 @@ border: none;
 }
 /*---User Profile----*/
 .edit-avatar-product-bt {
-	background-color: transparent;
-	color: black;
-	border: 1px solid rgb(159, 159, 159);
-	font-family:"Roboto Condensed", sans-serif ;
-	letter-spacing: 0.15em;
+  background-color: transparent;
+  color: black;
+  border: 1px solid rgb(159, 159, 159);
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.15em;
 }
 .edit-avatar-product-bt:hover {
-	background-color:  #98a86d;
-	border:none;
+  background-color: #98a86d;
+  border: none;
 }
 .btn-primary:disabled {
-	color: #fff;
-	background-color: #98a86d;
-	border-color: #98a86d;
+  color: #fff;
+  background-color: #98a86d;
+  border-color: #98a86d;
 }
 
-.avatar_pf{
-	
-	vertical-align: middle;
+.avatar_pf {
+  vertical-align: middle;
   width: 128px;
   height: 128px;
   border-radius: 50%;
@@ -524,34 +532,153 @@ border: none;
 }
 .checkout-btn {
   background-color: #98a86d;
-	color: white;
-	border: 1px solid #98a86d;
-	font-family:"Roboto Condensed", sans-serif ;
-	letter-spacing: 0.15em;
+  color: white;
+  border: 1px solid #98a86d;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.15em;
   padding: 10px 20px;
 }
-.checkout-btn:hover{
+.checkout-btn:hover {
   background-color: #98a86d;
-	border: 1px solid #98a86d;
-
+  border: 1px solid #98a86d;
 }
 
 /*----admin page----*/
 .create-product-button {
-	background-color: transparent;
-	color: black!important;
-	border: 1px solid rgb(159, 159, 159);
-	font-family:"Roboto Condensed", sans-serif ;
-	letter-spacing: 0.15em;
+  background-color: transparent;
+  color: black !important;
+  border: 1px solid rgb(159, 159, 159);
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.15em;
 }
 .create-product-button:hover {
-	background-color: #98a86d;
-	color: white!important;
-	border: 1px solid #98a86d;
+  background-color: #98a86d;
+  color: white !important;
+  border: 1px solid #98a86d;
 }
 .table-hover tbody tr:hover td {
-	background:#98a86d;
+  background: #98a86d;
 }
-.icon:hover{
-	color:white
+.icon:hover {
+  color: white;
+}
+/*----homepage  ---*/
+.homepage-btn{
+  background-color: white ;
+  color: black;
+  border: 1px solid  #98a86d;
+  font-family: 'Montserrat', sans-serif;
+}
+.homepage-btn:hover {
+  background-color:  #98a86d ;
+  color: white;
+  border: 1px solid  #98a86d;
+}
+.header-img {
+  max-width: 450px;
+  transition-duration: 0.3s;
+}
+.header-img:hover {
+  transition-duration: 0.3s;
+}
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+figure.snip1256 {
+  font-family: "Raleway", Arial, sans-serif;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  /* min-width: 220px; */
+  max-width: 460px;
+  max-height: 350px;
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+  background-color:  #98a86d;
+  font-size: 16px;
+  -webkit-perspective: 50em;
+  perspective: 50em;
+}
+figure.snip1256 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+figure.snip1256 img {
+  opacity: 1;
+  width: 100%;
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+figure.snip1256 figcaption {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 100%;
+  -webkit-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+  -webkit-transform-origin: 50% -50%;
+  -ms-transform-origin: 50% -50%;
+  transform-origin: 50% -50%;
+  z-index: 1;
+  opacity: 0;
+  padding: 20px 30px;
+
+}
+figure.snip1256 h3,
+figure.snip1256 p {
+  line-height: 1.5em;
+}
+figure.snip1256 h3 {
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+figure.snip1256 p {
+  font-size: 0.8em;
+  font-weight: 500;
+  margin: 0 0 15px;
+}
+figure.snip1256 .read-more {
+  border: 2px solid #ffffff;
+  padding: 0.5em 1em;
+  font-size: 0.8em;
+  text-decoration: none;
+  color: #ffffff;
+  display: inline-block;
+}
+figure.snip1256 .read-more:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+figure.snip1256:hover img,
+figure.snip1256.hover img {
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  opacity: 0;
+}
+figure.snip1256:hover figcaption,
+figure.snip1256.hover figcaption {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  opacity: 1;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.testimo-img {
+  max-height: 400px;
+}
+
+/*---footer-----*/
+.footer {
+  background-image: url("https://verdure.qodeinteractive.com/wp-content/uploads/2018/03/footer-background-img-1.jpg");
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.social {
+  margin-left: 150px;
+  margin-top: 25px;
+  font-size: 20px;
 }

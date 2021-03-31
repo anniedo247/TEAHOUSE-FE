@@ -11,6 +11,7 @@ import Products from "../../pages/Admin/Products";
 import NotFoundPage from "../../pages/NotFoundPage";
 import AddProduct from "../../pages/Admin/AddProduct"
 import EditProduct from "../../pages/Admin/EditProduct"
+import Footer from "../../components/Footer";
 
 const AdminLayout = () => {
   return (
@@ -27,6 +28,7 @@ const AdminLayout = () => {
           <Route component={NotFoundPage} />
         </Switch>
       </Container>
+      <Footer/>
     </>
   );
 };

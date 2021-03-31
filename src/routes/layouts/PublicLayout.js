@@ -17,6 +17,7 @@ import Shipping from "../../pages/Shipping";
 import Payment from "../../pages/Payment"
 import PlaceOrder from "../../pages/PlaceOrder";
 import OrderDone from "../../pages/OrderDone"
+import Footer from "../../components/Footer";
 
 const PublicLayout = () => {
   return (
@@ -39,6 +40,7 @@ const PublicLayout = () => {
           <Route component={NotFoundPage} />
         </Switch>
       </Container>
+      <Footer/>
     </>
   );
 };

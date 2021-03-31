@@ -11,7 +11,7 @@ const Cart = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
-
+  
   const removeFromCartHandler = (id) => {
     console.log("ihih", id);
     dispatch(cartActions.removeFromCart(id));
@@ -93,12 +93,12 @@ const Cart = () => {
                   </Col>
                   <Col xl={2}>
                   <div className="cart-add-quantity-box">
-                      <button onClick={()=>handleSubQuantity(item._id)}>-</button>
+                      <button onClick={()=>handleSubQuantity(item.id)}>-</button>
                       <input
                         name="quantity"
                         value={item.quantity}
                       />
-                      <button onClick={()=>handleAddQuantity(item._id)}>+</button>
+                      <button onClick={()=>handleAddQuantity(item.id)}>+</button>
                     </div>
                   </Col>
                   <Col xl={2}>
@@ -125,7 +125,7 @@ const Cart = () => {
                   </Col>
                   <Col>
                     <FontAwesomeIcon
-                      onClick={() => removeFromCartHandler(item._id)}
+                      onClick={() => removeFromCartHandler(item.id)}
                       icon={faTimes}
                       size="lg"
                       color="black"

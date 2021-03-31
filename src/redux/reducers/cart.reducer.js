@@ -14,12 +14,12 @@ const cartReducer = (state = initialState, action) => {
     case types.CART_REMOVE_ITEMS:
       return {
         ...state,
-        cartItems: state.cartItems.filter((x) => x._id !== payload),
+        cartItems: state.cartItems.filter((x) => x.id !== payload),
       };
     case types.ADD_QUANTITY:
       console.log("payload", payload);
       return { ...state, cartItems: state.cartItems.map(item =>
-        item._id === payload
+        item.id === payload
           ? {
               ...item,
               quantity: item.quantity + 1,
@@ -28,7 +28,7 @@ const cartReducer = (state = initialState, action) => {
       ) };
       case types.SUB_QUANTITY:
         return { ...state, cartItems: state.cartItems.map(item =>
-          item._id === payload
+          item.id === payload
             ? {
                 ...item,
                 quantity: item.quantity > 1 ? item.quantity - 1 : 1,

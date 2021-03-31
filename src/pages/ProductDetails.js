@@ -6,8 +6,8 @@ import { useHistory } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import cartActions from "../redux/actions/cart.actions";
 
+import cartActions from "../redux/actions/cart.actions";
 import reviewActions from "../redux/actions/review.actions";
 import productActions from "../redux/actions/product.actions";
 import Review from "../components/Review";
@@ -73,7 +73,7 @@ const ProductDetails = () => {
   }, [dispatch, productId]);
   return (
     <div>
-      <Container>
+      <Container >
         <Row>
           <Col xl={6}>
             {product && (
@@ -104,11 +104,11 @@ const ProductDetails = () => {
               {product && product.categories[0].name === "drink" ? (
                 <div>
                   <Row>
-                    <Col>
                       <p>SIZE :</p>
-                    </Col>
-                    <Col>
+                    
+                
                       <input
+                       className="ml-2"
                         type="radio"
                         id="small"
                         name="size"
@@ -116,29 +116,30 @@ const ProductDetails = () => {
                         onChange={(e) => setSize(e.target.value)}
                         checked
                       />
-                      <label className="ml-2" for="small">Small</label>
-                    </Col>
-                    <Col>
+                      <label for="small">Small</label>
+                    
+                    
                       <input
+                       className="ml-2"
                         type="radio"
                         id="medium"
                         name="size"
                         value="medium"
                         onChange={(e) => setSize(e.target.value)}
                       />
-                      <label className="ml-2" for="medium">Medium(+5,000 VND)</label>
-                    </Col>
-                    <Col>
+                      <label for="medium">Medium(+5,000 VND)</label>
+                   
+                    
                       <input
-                        className="radio-btn"
+                        className="ml-2"
                         type="radio"
                         id="large"
                         name="size"
                         value="large"
                         onChange={(e) => setSize(e.target.value)}
                       />
-                      <label className="ml-2" >Large(+10,000 VND)</label>
-                    </Col>
+                      <label >Large(+10,000 VND)</label>
+                   
                   </Row>
                   <Row>
                     <div className="modal-add-quantity-box">

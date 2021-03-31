@@ -11,8 +11,8 @@ const OrderDone = () => {
       >
         <span className="header-title">PLACE ORDER</span>
       </Container>
-      <div>
-        <h1>We have received your order.</h1>
+      <div className="text-center mt-5">
+        <h1>Thanks for your order.</h1>
         <Link to="/"> Continue Shopping</Link>
       </div>
     </div>

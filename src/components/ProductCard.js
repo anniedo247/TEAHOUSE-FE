@@ -3,8 +3,14 @@ import { Col, Container, Modal, Row } from "react-bootstrap";
 import StarRatings from "react-star-ratings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faEye } from "@fortawesome/free-regular-svg-icons";
+import {useHistory} from "react-router-dom"
+import {useDispatch} from "react-redux"
+import cartActions from "../redux/actions/cart.actions";
+
 
 export const ProductCard = ({ product, handleClickProduct }) => {
+  const history = useHistory()
+  const dispatch = useDispatch()
   const [show, setShow] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
@@ -19,7 +25,19 @@ export const ProductCard = ({ product, handleClickProduct }) => {
   const handlePlus = () => {
     setQuantity(quantity + 1);
   };
+  const addToCartHandle = () => {
+    if (product.categories[0].name === "drink") {
+      history.push(`/cart/${product._id}?qty=${quantity}&size=${size}`);
+    } else {
+      history.push(`/cart/${product._id}?qty=${quantity}`);
+    }
 
+    console.log(quantity, size);
+
+    if (product._id) {
+      dispatch(cartActions.addToCart(product._id, quantity, size));
+    }
+  };
   const truncateText = (text, length) => {
     if (text.length > length) {
       return text.slice(0, length - 1) + "...";
@@ -40,7 +58,6 @@ export const ProductCard = ({ product, handleClickProduct }) => {
               <div className="view-icon">
                 <FontAwesomeIcon onClick={handleShow} icon={faEye} size="lg" />
               </div>
-              <div className="add-to-cart">Add to cart</div>
             </div>
           </div>
           <h5
@@ -157,7 +174,7 @@ export const ProductCard = ({ product, handleClickProduct }) => {
                   />
                   <button onClick={handlePlus}>+</button>
                 </div>
-                <button className="modal-add">Add To Cart</button>
+                <button onClick={addToCartHandle} className="modal-add">Add To Cart</button>
                 <div className="mt-3">
                   <span className = "modal-view-details" onClick={() => handleClickProduct(product._id)}>View Details</span>{" "}
                   

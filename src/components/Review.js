@@ -51,8 +51,8 @@ const Review = ({
                 style={{ borderBottom: "1px solid gray" }}
               >
                 {" "}
-                {r.user.images ? (
-                  <img className="review-avatar" src={r.images[0]} />
+                {r.user.avatarUrl ? (
+                  <img className="review-avatar" src={r.user.avatarUrl} />
                 ) : (
                   <img
                     className="review-avatar"
