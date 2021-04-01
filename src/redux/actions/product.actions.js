@@ -2,12 +2,16 @@ import { toast } from "react-toastify";
 import api from "../apiService";
 import * as types from "../constants/product.constants";
 
-const getAllProducts = (pageNum, limit, category) => async (dispatch) => {
+const getAllProducts = (pageNum, limit, category,searchTerm) => async (dispatch) => {
   dispatch({ type: types.GET_PRODUCTS_REQUEST, payload: null });
   try {
     let url = `/products?page=${pageNum}&limit=${limit}`;
     if (category) {
       url = url + `&category=${category}`;
+    }
+    if (searchTerm) {
+      url = url + `&search=${searchTerm}`;
+
     }
     const res = await api.get(url);
     if (res.data.success === true) {
@@ -17,6 +21,10 @@ const getAllProducts = (pageNum, limit, category) => async (dispatch) => {
     dispatch({ type: types.GET_PRODUCTS_FAILURE, payload: error });
   }
 };
+const addSearchTerm = (searchTerm)=> async (dispatch)=> {
+dispatch({type: types.ADD_SEARCH_TERM,payload:searchTerm})
+}
+
 const getAllFavoriteProducts = (pageNum, limit) => async (dispatch) => {
   dispatch({ type: types.GET_ALL_FAVORITE_PRODUCTS_REQUEST, payload: null });
   try {
@@ -146,6 +154,7 @@ const productActions = {
   deleteProduct,
   addToFavorite,
   removeFromFavorite,
+  addSearchTerm
 };
 
 export default productActions;

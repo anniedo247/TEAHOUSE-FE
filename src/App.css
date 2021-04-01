@@ -16,6 +16,15 @@
   box-sizing: border-box;
 }
 
+body {
+  min-height: 100vh;
+}
+
+.custom-modal {
+  height: 100vh!important;
+  width: 100vh!important;
+}
+
 /*-------searchBar--------*/
 .bg-custom {
   background-color: white;
@@ -259,7 +268,7 @@
 }
 .product-card:hover .product-card--image-top {
   opacity: 1;
-  background-color: rgba(255, 255, 255, 0);
+  background: linear-gradient(180deg, rgba(186, 220, 138, 0.6) 0%, rgba(255,255,255,0) 20%);
   transition-duration: 0.5s;
 }
 .heart-icon {

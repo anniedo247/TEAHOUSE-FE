@@ -13,13 +13,14 @@ import { useSelector, useDispatch } from "react-redux";
 
 import SearchBar from "./SearchBar";
 import authActions from "../redux/actions/auth.actions";
+import productActions from "../redux/actions/product.actions";
 
 const PublicNavbar = () => {
   const [isOpen, setOpen] = useState(false);
-  const [searchInput, setSearchInput] = useState("")
+  const [searchInput, setSearchInput] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const cartItems = useSelector((state)=> state.cart.cartItems)
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.auth.loading);
 
@@ -27,17 +28,13 @@ const PublicNavbar = () => {
     dispatch(authActions.logout());
   };
 
-  const onSearchChange = (e)=>{
-    setSearchInput(e.target.value)
-  }
+  const onSearchChange = (e) => {
+    setSearchInput(e.target.value);
+  };
   const onSearchSubmit = (e) => {
     e.preventDefault();
-    if(searchInput !== "") {
-        setSearchInput(searchInput);
-    } else {
-        setSearchInput("")
-    }
-  }
+    dispatch(productActions.addSearchTerm(searchInput));
+  };
   const adminBar = (
     <div
       style={{
@@ -46,7 +43,7 @@ const PublicNavbar = () => {
         top: "50%",
         transform: "translateY(-50%)",
         display: "flex",
-        zIndex:10
+        zIndex: 10,
       }}
     >
       <FontAwesomeIcon icon={faUser} size="lg" color="black" />
@@ -87,7 +84,7 @@ const PublicNavbar = () => {
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
-      <span className="mr-2" >({cartItems.length})</span>
+      <span className="mr-2">({cartItems.length})</span>
       <FontAwesomeIcon
         onClick={handleLogout}
         icon={faSignOutAlt}
@@ -115,7 +112,7 @@ const PublicNavbar = () => {
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
-      <span className="mr-2" >({cartItems.length})</span>
+      <span className="mr-2">({cartItems.length})</span>
     </div>
   );
 
@@ -131,7 +128,11 @@ const PublicNavbar = () => {
           }}
           className="d-lg-block d-none "
         >
-          <SearchBar onChange={onSearchChange} onSubmit={onSearchSubmit} searchInput={searchInput}/>
+          <SearchBar
+            onChange={onSearchChange}
+            onSubmit={onSearchSubmit}
+            searchInput={searchInput}
+          />
         </div>
         <div
           style={{
@@ -161,70 +162,67 @@ const PublicNavbar = () => {
           : publicBar}
       </div>
       <div className="d-lg-block d-none ">
-      <Navbar bg="custom" expand="md">
-        <Navbar.Toggle
-          bsPrefix="navbar-toggler hamburger-button"
-          children={<Hamburger toggled={isOpen} toggle={setOpen} />}
-          aria-controls="basic-navbar-nav"
-        />
-        <Navbar.Collapse
-          className="d-flex justify-content-center "
-          id="basic-navbar-nav"
-        >
-          <Nav>
-            <Nav.Link className="nav-menu" as={Link} to="/">
-              HOME
-            </Nav.Link>
-            <Nav.Link className="nav-menu" as={Link} to="/drink">
-              DRINK
-            </Nav.Link>
-            <Nav.Link className="nav-menu" as={Link} to="/tea">
-              TEA
-            </Nav.Link>
-            <Nav.Link className="nav-menu" as={Link} to="/gift">
-              GIFT SETS
-            </Nav.Link>
-            <Nav.Link className="nav-menu" as={Link} to="/contact">
-              CONTACT US
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+        <Navbar bg="custom" expand="md">
+          <Navbar.Toggle
+            bsPrefix="navbar-toggler hamburger-button"
+            children={<Hamburger toggled={isOpen} toggle={setOpen} />}
+            aria-controls="basic-navbar-nav"
+          />
+          <Navbar.Collapse
+            className="d-flex justify-content-center "
+            id="basic-navbar-nav"
+          >
+            <Nav>
+              <Nav.Link className="nav-menu" as={Link} to="/">
+                HOME
+              </Nav.Link>
+              <Nav.Link className="nav-menu" as={Link} to="/drink">
+                DRINK
+              </Nav.Link>
+              <Nav.Link className="nav-menu" as={Link} to="/tea">
+                TEA
+              </Nav.Link>
+              <Nav.Link className="nav-menu" as={Link} to="/gift">
+                GIFT SETS
+              </Nav.Link>
+              <Nav.Link className="nav-menu" as={Link} to="/contact">
+                CONTACT US
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
       <div className="d-lg-none py-3">
-      <Navbar bg="custom" expand="md">
-        <Navbar.Toggle
-          bsPrefix="navbar-toggler hamburger-button"
-          children={<Hamburger toggled={isOpen} toggle={setOpen} />}
-          aria-controls="basic-navbar-nav"
-        />
-        <Navbar.Collapse
-          id="basic-navbar-nav"
-        >
-          <Nav>
-            <Nav.Link className="nav-menu" as={Link} to="/">
-              HOME
-            </Nav.Link>
-            <Nav.Link className="nav-menu" as={Link} to="/drink">
-              DRINK
-            </Nav.Link>
-            <Nav.Link className="nav-menu" as={Link} to="/tea">
-              TEA
-            </Nav.Link>
-            <Nav.Link className="nav-menu" as={Link} to="/gift">
-              GIFT SETS
-            </Nav.Link>
-            <Nav.Link className="nav-menu" as={Link} to="/contact">
-              CONTACT US
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+        <Navbar bg="custom" expand="md">
+          <Navbar.Toggle
+            bsPrefix="navbar-toggler hamburger-button"
+            children={<Hamburger toggled={isOpen} toggle={setOpen} />}
+            aria-controls="basic-navbar-nav"
+          />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav>
+              <Nav.Link className="nav-menu" as={Link} to="/">
+                HOME
+              </Nav.Link>
+              <Nav.Link className="nav-menu" as={Link} to="/drink">
+                DRINK
+              </Nav.Link>
+              <Nav.Link className="nav-menu" as={Link} to="/tea">
+                TEA
+              </Nav.Link>
+              <Nav.Link className="nav-menu" as={Link} to="/gift">
+                GIFT SETS
+              </Nav.Link>
+              <Nav.Link className="nav-menu" as={Link} to="/contact">
+                CONTACT US
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
       <div className="bg-custom bar d-lg-none py-3">
         <SearchBar />
       </div>
-     
     </div>
   );
 };

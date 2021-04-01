@@ -13,13 +13,14 @@ const GiftPage = () => {
   const history = useHistory()
   const products = useSelector((state) => state.product.products);
   const totalPages = useSelector((state) => state.product.totalPages);
+  const searchTerm = useSelector((state) => state.product.searchTerm);
   const [pageNum, setPageNum] = useState(1);
   const limit = 6;
   const [category,setCategory] = useState("gift set")
 
   useEffect(() => {
-    dispatch(productActions.getAllProducts(pageNum,limit,category));
-  }, [dispatch,pageNum,limit,category]);
+    dispatch(productActions.getAllProducts(pageNum,limit,category,searchTerm));
+  }, [dispatch,pageNum,limit,category,searchTerm]);
     
   
   // const handleClick = () =>{

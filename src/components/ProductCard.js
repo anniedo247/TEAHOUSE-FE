@@ -46,8 +46,8 @@ export const ProductCard = ({ product, handleClickProduct }) => {
   };
 
   return (
-    <div>
-      <Col xl={4} lg={6} md={12} className="d-flex justity-content-center">
+    <React.Fragment>
+      <Col lg={4} md={6} sm={12} className="d-flex justify-content-center">
         <div className=" mb-5 product-card">
           <div className="product-card--wrapper">
             <img src={product.images[0]} />
@@ -183,8 +183,10 @@ export const ProductCard = ({ product, handleClickProduct }) => {
             </div>
           </div>
         </Modal.Body>
-      </Modal>
-    </div>
+      </Modal> 
+  </React.Fragment>
   );
 };
 export default ProductCard;
+
+ /* */

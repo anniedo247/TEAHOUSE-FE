@@ -6,6 +6,7 @@ const initialState = {
   totalPages: 1,
   loading: false,
   avgRating: null,
+  searchTerm:"",
 };
 const productReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -35,6 +36,9 @@ const productReducer = (state = initialState, action) => {
       };
     case types.GET_SINGLE_PRODUCTS_FAILURE:
       return { ...state, loading: false };
+    //add SearchTerm
+    case types.ADD_SEARCH_TERM:
+      return {...state, searchTerm:payload}
 
     //CREATE NEW PRODUCT
     case types.CREATE_PRODUCT_REQUEST:
