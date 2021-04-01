@@ -69,7 +69,7 @@ const updateOrderStatus = (id) => async (dispatch)=> {
    const res = await api.put(`/orders/${id}/delivery`)
    if (res.data.success) {
      dispatch({type: types.UPDATE_ORDER_STATUS_SUCCESS, payload: res.data.data.order})
-     dispatch(getSingleOrder())
+     dispatch(getSingleOrder(id))
    }
   } catch (error) {
     dispatch({ type: types.UPDATE_ORDER_STATUS_FAILURE, payload: error });
