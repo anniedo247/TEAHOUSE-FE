@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button, Col } from "react-bootstrap";
+import { Container, Form, Button,ButtonGroup, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import ClipLoader from "react-spinners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,26 +24,43 @@ const EditProduct = () => {
     categories: [],
   });
 
-  useEffect(() => {
-    console.log("bbbb", productId);
-    if (productId) {
-      if (!selectedProduct) {
-        dispatch(productActions.getSingleProduct(productId));
-      }
-      console.log("aaa", selectedProduct);
-      if (selectedProduct) {
-        setNewProduct((newProduct) => ({
-          ...newProduct,
-          name: selectedProduct.name,
-          description: selectedProduct.description,
-          ingredients: selectedProduct.ingredients,
-          price: selectedProduct.price,
-          images: selectedProduct.images,
-          categories: selectedProduct.categories,
-        }));
-      }
+  useEffect(()=>{
+    if(productId){
+       dispatch(productActions.getSingleProduct(productId));
     }
-  }, [dispatch, productId]);
+  },[dispatch,productId])
+  useEffect(()=> {
+    if (selectedProduct) {
+            setNewProduct((newProduct) => ({
+              ...newProduct,
+              name: selectedProduct.name,
+              description: selectedProduct.description,
+              ingredients: selectedProduct.ingredients,
+              price: selectedProduct.price,
+              images: selectedProduct.images,
+              categories: selectedProduct.categories,
+            }))};
+  },[selectedProduct])
+  // useEffect(() => {
+  //   console.log("bbbb", productId);
+  //   if (productId) {
+  //     // if (!selectedProduct) {
+  //       dispatch(productActions.getSingleProduct(productId));
+  //     // }
+  //     console.log("aaa", selectedProduct);
+  //     if (selectedProduct) {
+  //       setNewProduct((newProduct) => ({
+  //         ...newProduct,
+  //         name: selectedProduct.name,
+  //         description: selectedProduct.description,
+  //         ingredients: selectedProduct.ingredients,
+  //         price: selectedProduct.price,
+  //         images: selectedProduct.images,
+  //         categories: selectedProduct.categories,
+  //       }));
+  //     }
+  //   }
+  // }, [dispatch, productId]);
 
   const onChange = (e) => {
     setNewProduct({ ...newProduct, [e.target.id]: e.target.value });
@@ -51,7 +68,7 @@ const EditProduct = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const {
+    let {
       name,
       description,
       ingredients,
@@ -60,16 +77,17 @@ const EditProduct = () => {
       categories,
     } = newProduct;
     dispatch(
-      productActions.updateProduct(
-        selectedProduct._id,
+      productActions.updateProduct({
+        productId:selectedProduct._id,
         name,
         description,
         ingredients,
         price,
         images,
         categories
-      )
+      })
     );
+    setEditable(false);
   };
   const handleCancel = () => {
     setEditable(false);
@@ -96,11 +114,11 @@ const EditProduct = () => {
   console.log("ccccc", newProduct);
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <div className="d-flex justify-content-center align-items-center">
           <ClipLoader color="#f86c6b" size={150} loading={true} />
         </div>
-      ) : (
+      ) : ( */}
         <>
           <Container
             fluid
@@ -123,7 +141,7 @@ const EditProduct = () => {
             </Button>
           </div>
           <div
-            className="d-flex justify-content-center"
+            className="d-flex justify-content-center mb-5"
             style={{ marginTop: "30px" }}
           >
             <Form
@@ -140,6 +158,7 @@ const EditProduct = () => {
               <Button
                 className="mx-auto w-50 create-product-btn"
                 onClick={uploadWidget}
+                disabled={!editable}
               >
                 UPLOAD IMAGES
               </Button>
@@ -161,6 +180,7 @@ const EditProduct = () => {
                     type="name"
                     value={newProduct.name}
                     onChange={onChange}
+                    disabled={!editable}
                   />
                 </Form.Group>
               </Form.Row>
@@ -183,6 +203,7 @@ const EditProduct = () => {
                     as="textarea"
                     value={newProduct.description}
                     onChange={onChange}
+                    disabled={!editable}
                   />
                 </Form.Group>
               </Form.Row>
@@ -204,6 +225,7 @@ const EditProduct = () => {
                     type="ingredients"
                     value={newProduct.ingredients}
                     onChange={onChange}
+                    disabled={!editable}
                   />
                 </Form.Group>
               </Form.Row>
@@ -225,6 +247,7 @@ const EditProduct = () => {
                     type="price"
                     value={Number(newProduct.price)}
                     onChange={onChange}
+                    disabled={!editable}
                   />
                 </Form.Group>
               </Form.Row>
@@ -246,10 +269,44 @@ const EditProduct = () => {
                     type="categories"
                     value={newProduct?.categories.map((c) => c.name)}
                     onChange={onChange}
+                    disabled={!editable}
                   />
                 </Form.Group>
               </Form.Row>
-              <div className="text-center">
+              {editable && (
+                  <ButtonGroup className="d-flex mb-3">
+                    {/* {loading ? (
+                      <Button
+                        className="mr-3"
+                        variant="primary"
+                        type="button"
+                        disabled
+                      >
+                        <span
+                          className="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                        Submitting...
+                      </Button>
+                    ) : ( */}
+                      <Button
+                        className="mx-3 w-25 create-product-btn"
+                        type="submit"
+                      >
+                        SUBMIT
+                      </Button>
+                    {/* )} */}
+                    <Button
+                      className="mx-3 w-25 create-product-bt"
+                      onClick={handleCancel}
+                      disabled={!editable}
+                    >
+                      CANCEL
+                    </Button>
+                  </ButtonGroup>
+                )}
+              {/* <div className="text-center">
                 <Button
                   className="mx-3 w-25 create-product-btn"
                   variant="primary"
@@ -265,12 +322,12 @@ const EditProduct = () => {
                 >
                   CANCEL
                 </Button>
-              </div>
+              </div> */}
               
             </Form>
           </div>
         </>
-      )}
+      {/* )} */}
     </>
   );
 };

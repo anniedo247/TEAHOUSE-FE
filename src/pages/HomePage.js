@@ -10,8 +10,12 @@ import TestimonialsCarousel from "../components/TestimonialsCarousel";
 
 const HomePage = () => {
   const history = useHistory()
+   const readMore = ()=> {
+     history.push('/products/6064ae81a3db55d656d6a6ad')
+   }
    const contactUs = ()=> {
-     history.push('/contact')
+    history.push('/contact')
+
    }
 
   return (
@@ -67,7 +71,7 @@ const HomePage = () => {
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut
                 enim ad minim veniam, quis nostrud exercitation.
               </p>
-              <Link to="/giftset" class="read-more">
+              <Link to="/gift" class="read-more">
                 Shop now
               </Link>
             </figcaption>
@@ -106,7 +110,7 @@ const HomePage = () => {
             </p>
             <div className="text-center mt-5">
               
-                <Button onClick= {contactUs} className="homepage-btn">Read More</Button>
+                <Button onClick= {readMore} className="homepage-btn">Read More</Button>
               
             </div>
           </Col>
@@ -137,7 +141,7 @@ const HomePage = () => {
               eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
             </p>
             <div className="text-center mt-5">
-              <Button className="homepage-btn">Contact Us</Button>
+              <Button onClick={contactUs} className="homepage-btn">Contact Us</Button>
             </div>
           </Col>
           <Col xl={6}>

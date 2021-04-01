@@ -33,12 +33,55 @@ const createOrder = (order) => async (dispatch) => {
     dispatch({ type: types.CREATE_ORDER_FAILURE, payload: error });
 
   }
+}
+const getMyOrders = () => async (dispatch) => {
+  dispatch({ type: types.GET_MY_ORDERS_REQUEST, payload: null });
+  try {
+    const res = await api.get("/orders/myorders");
+    console.log("data",res.data.data.orders)
+    if (res.data.success === true) {
+      dispatch({ type: types.GET_MY_ORDERS_SUCCESS, payload: res.data.data.orders });
+      
 
+    }
+  } catch (error) {
+    dispatch({ type: types.GET_MY_ORDERS_FAILURE, payload: error });
+  }
+};
+const getSingleOrder = (id) => async (dispatch) => {
+  dispatch({ type: types.GET_SINGLE_ORDER_REQUEST, payload: null });
+  try {
+    const res = await api.get(`/orders/${id}`);
+    console.log("ress", res.data.data.order);
+    if (res.data.success === true) {
+      dispatch({
+        type: types.GET_SINGLE_ORDER_SUCCESS,
+        payload: res.data.data.order,
+      });
+    }
+  } catch (error) {
+    dispatch({ type: types.GET_SINGLE_ORDER_FAILURE, payload: error });
+  }
+};
+const updateOrderStatus = (id) => async (dispatch)=> {
+  dispatch({type: types.UPDATE_ORDER_STATUS_REQUEST,payload:null})
+  try {
+   const res = await api.put(`/orders/${id}/delivery`)
+   if (res.data.success) {
+     dispatch({type: types.UPDATE_ORDER_STATUS_SUCCESS, payload: res.data.data.order})
+     dispatch(getSingleOrder())
+   }
+  } catch (error) {
+    dispatch({ type: types.UPDATE_ORDER_STATUS_FAILURE, payload: error });
+  }
 
 }
 const orderActions = {
   getAllOrders,
   createOrder,
+  getMyOrders,
+  getSingleOrder,
+  updateOrderStatus,
 }
 
 export default orderActions;

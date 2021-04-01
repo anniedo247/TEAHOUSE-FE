@@ -45,6 +45,7 @@ const PublicNavbar = () => {
         top: "50%",
         transform: "translateY(-50%)",
         display: "flex",
+        zIndex:10
       }}
     >
       <FontAwesomeIcon icon={faUser} size="lg" color="black" />

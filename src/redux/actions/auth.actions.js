@@ -54,6 +54,20 @@ const updateProfile = (name, avatarUrl) => async (dispatch) => {
     dispatch({ type: types.UPDATE_CURRENT_USER_PROFILE_FAILURE, payload: error });
   }
 };
+const getOtherUserInfo = (id)=> async (dispatch)=> {
+  dispatch({type: types.GET_OTHER_USER_REQUEST, payload:null})
+  try {
+    const res = await api.get(`/users/${id}`)
+    if (res.data.success) {
+      dispatch({type: types.GET_CURRENT_USER_SUCCESS, payload: res.data.data.user})
+    }
+  } catch (error) {
+    dispatch({ type: types.GET_OTHER_USER_FAILURE, payload: error });
+
+  }
+
+
+}
 
 const logout = () => (dispatch) => {
   delete api.defaults.headers.common["Authorization"];
@@ -66,6 +80,6 @@ const authActions = {
   login,
   getCurrentUser,
   updateProfile,
-  logout
+  logout, getOtherUserInfo
 }
 export default authActions;

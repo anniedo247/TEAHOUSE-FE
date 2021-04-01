@@ -73,9 +73,20 @@ const addProduct = ({
     dispatch({ type: types.CREATE_PRODUCT_FAILURE, payload: error });
   }
 };
-const updateProduct = ( productId,name,description,ingredients,weight,price,images,categories
+const updateProduct = ( {productId,name,description,ingredients,weight,price,images,categories}
 ) => async (dispatch) => {
   dispatch({type: types.UPDATE_PRODUCT_REQUEST,payload:null});
+  console.log("a",productId)
+  console.log("b",name)
+
+  console.log("c",description)
+  console.log("d",ingredients)
+  console.log("e",weight)
+  console.log("f",price)
+  console.log("g",images)
+  console.log("h",categories)
+
+
   try {
     const res= await api.put(`products/${productId}/update`,{name,description,ingredients,weight,price,images,categories})
     if(res.data.data.success===true) {

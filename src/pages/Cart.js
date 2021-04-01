@@ -36,11 +36,16 @@ const Cart = () => {
       >
         <span className="header-title">SHOPPING CART</span>
       </Container>
-      <Container>
+      <Container style={{paddingTop:"200px",paddingBottom:"200px"}}>
         {cartItems.length === 0 ? (
-          <p>
+          <h5 style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: "1.7rem",
+            fontWeight: "400",
+            
+          }}>
             Your cart is empty. <Link to="/">Go back</Link>
-          </p>
+          </h5>
         ) : (
           <div className="mt-5">
             <Row>
@@ -71,7 +76,7 @@ const Cart = () => {
                     <Row>
                       <img style={{ width: "50px" }} src={item.images[0]} />{" "}
                       <div className="ml-4">
-                        <h3>{item.name}</h3>
+                        <h4><Link to={`/products/${item.id}`}>{item.name}</Link></h4>
                         <p style={{fontFamily:"'Montserrat', sans-serif"}}>{item.size ? <p>size: {item.size}</p> : null}</p>
                       </div>
                     </Row>

@@ -34,7 +34,7 @@ const LoginPage = ({location,history}) => {
         <ClipLoader color="blue" loading={loading} size={150} />
       ) : (
         <div>
-          <Container fluid style={{ width: "50%", marginTop: "30px" }}>
+          <Container fluid style={{ width: "50%", marginTop: "30px", marginBottom:"50px" }}>
             <div className="text-center p-terms">
               <h2> LOGIN</h2>
               <h4>Great to have you back!</h4>

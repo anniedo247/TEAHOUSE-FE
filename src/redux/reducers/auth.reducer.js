@@ -6,6 +6,7 @@ const initialState = {
   isAuthenticated,
   accessToken: localStorage.getItem("token"),
   loading: false,
+  selectedUser: null,
 };
 const authReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -45,7 +46,13 @@ const authReducer = (state = initialState, action) => {
       return {...state,loading: false, user:{...state.user, payload}}
     case types.UPDATE_CURRENT_USER_PROFILE_FAILURE:
       return {...state, loading: false}
-
+    // Admin get user info
+    case types.GET_OTHER_USER_REQUEST:
+      return {...state, loading: true};
+    case types.GET_OTHER_USER_SUCCESS:
+      return {...state,loading: false, selectedUser: payload}
+    case types.GET_OTHER_USER_FAILURE:
+      return {...state, loading: false}
     //logout
     case types.LOGOUT:
       return {

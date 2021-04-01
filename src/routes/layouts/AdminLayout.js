@@ -12,6 +12,7 @@ import NotFoundPage from "../../pages/NotFoundPage";
 import AddProduct from "../../pages/Admin/AddProduct"
 import EditProduct from "../../pages/Admin/EditProduct"
 import Footer from "../../components/Footer";
+import OrderDetails from "../../pages/Admin/OrderDetails"
 
 const AdminLayout = () => {
   return (
@@ -22,6 +23,7 @@ const AdminLayout = () => {
         <Switch>
           <Route exact path="/admin/users" component={Users} />
           <Route exact path="/admin/orders" component={Orders} />
+          <Route exact path="/admin/orders/:orderId" component={OrderDetails} />
           <Route exact path="/admin/products" component={Products} />
           <Route exact path="/admin/products/add" component={AddProduct} />
           <Route exact path="/admin/products/:productId/edit" component={EditProduct} />

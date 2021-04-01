@@ -87,6 +87,22 @@
   height: 400px;
   color: white;
 }
+.tea-header {
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617210647/teaHouse/iStock-955161996_1512x_ue1mkj.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  color: white;
+}
+.gift-header{
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617213356/teaHouse/154876745_1162090914255957_3009234667051155295_n_gamqq5.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  color: white;
+}
 .favorite-header {
   background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616859936/teaHouse/photo-1616109757712-263c97c28a4b_aro6ia.jpg");
   background-attachment: fixed;
@@ -121,6 +137,22 @@
 }
 .admin-product-header {
   background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616986344/teaHouse/photo-1437315306147-0923bdb3fc12_hqkqbb.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  color: white;
+}
+.admin-user-header {
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617244982/teaHouse/danurwendho-adyakusuma-dYxx-jPaF34-unsplash_jmbacm.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  color: white;
+}
+.admin-order-header {
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617251099/teaHouse/photo-1602943543714-cf535b048440_hrboto.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -214,13 +246,13 @@
   position: absolute;
   top: 15px;
   left: 40px;
-  color: rgb(84, 84, 84);
+  color: white;
 }
 .view-icon {
   position: absolute;
   top: 15px;
   left: 70px;
-  color: rgb(84, 84, 84);
+  color: white;
 }
 .add-to-cart {
   position: absolute;

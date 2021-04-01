@@ -7,9 +7,9 @@ import PublicNavbar from  "../../components/PublicNavbar"
 import SideMenu from "../../components/SideMenu"
 import UserInfo from "../../pages/User/UserInfo";
 import UserOrders from "../../pages/User/UserOrders";
+import UserOrdersDetail from "../../pages/User/UserOrdersDetail";
 import NotFoundPage from "../../pages/NotFoundPage"
 import Footer from "../../components/Footer";
-//import FavoritePage from "../../pages/FavoritePage";
 
 const UserLayout = () => {
   return (
@@ -28,8 +28,8 @@ const UserLayout = () => {
         <Switch>
           <Route exact path="/users/me/profile" component={UserInfo} />
           <Route exact path="/users/me/orders" component={UserOrders} />
-          {/* <Route exact path="/users/favorite" component={FavoritePage} /> */}
-          
+          <Route exact path="/users/me/orders/:orderId" component={UserOrdersDetail} />
+
           <Route component={NotFoundPage} />
         </Switch>
       </Row>

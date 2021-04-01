@@ -8,19 +8,24 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 import productActions from "../../redux/actions/product.actions";
+import PaginationBar from "../../components/PaginationBar"
 
 const Products = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const products = useSelector((state) => state.product.products);
+  const totalPages = useSelector((state) => state.product.totalPages);
+
   const loading = useSelector((state) => state.product.loading);
+  const [pageNum, setPageNum] = useState(1);
+  const limit = 10;
 
   const handleClickProduct = (id) => {
     history.push(`/admin/products/${id}/edit`);
   };
   useEffect(() => {
-    dispatch(productActions.getAllProducts());
-  }, []);
+    dispatch(productActions.getAllProducts(pageNum,limit));
+  }, [dispatch,pageNum,limit]);
 
   const onDeleteProduct = (id) => {
     console.log("productIs", id);
@@ -99,6 +104,7 @@ const Products = () => {
           ))}
         </Table>
       </Container>
+      <PaginationBar pageNum={pageNum} setPageNum={setPageNum} totalPages={totalPages}/>
       )
     </>
   );

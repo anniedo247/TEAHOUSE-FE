@@ -75,20 +75,20 @@ const Footer = () => {
                 </Row>
               </div>
 
-              <div class="col-xl-4 col-md-4 col-sm-4 col-12 text-center">
+              <div class="col-xl-4 col-md-4 col-sm-4 col-12 ">
                 <h6 class="mb-3 mb-lg-4 bold-text ">
-                  <b>MENU</b>
+                  <b style={{fontFamily:"'Montserrat', sans-serif",fontSize:"19px",fontWeight:"600"}}>MENU</b>
                 </h6>
                 <ul class="list-unstyled">
-                  <li>Home</li>
-                  <li>Drink</li>
-                  <li>Tea</li>
-                  <li>Gift Cart</li>
+                  <li style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>Home</li>
+                  <li style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>Drink</li>
+                  <li style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>Tea</li>
+                  <li style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>Gift Cart</li>
                 </ul>
               </div>
-              <div class="col-xl-4col-md-4 col-sm-4 col-12 text-center">
+              <div class="col-xl-4col-md-4 col-sm-4 col-12 ">
                 <h6 class="mb-3 mb-lg-4 bold-text mt-sm-0 mt-5">
-                  <b>CONTACT US</b>
+                  <b style={{fontFamily:"'Montserrat', sans-serif",fontSize:"19px",fontWeight:"600"}}>CONTACT US</b>
                 </h6>
                 <p class="mb-1">
                   {" "}
@@ -97,17 +97,17 @@ const Footer = () => {
                     size="md"
                     color="black"
                   />
-                  50, BA TRIEU, HOAN KIEM ,HA NOI
+                 <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400",marginLeft:"10px"}}>50 BA TRIEU, HOAN KIEM,HA NOI</span> 
                 </p>
                 <p>
                   {" "}
                   <FontAwesomeIcon icon={faPhoneAlt} size="md" color="black" />
-                  +84 000 0000
+                  <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400",marginLeft:"10px"}}>+84 000 000 000</span>
                 </p>
                 <p>
                   {" "}
                   <FontAwesomeIcon icon={faEnvelope} size="md" color="black" />
-                  info@gmail.com
+                  <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400",marginLeft:"10px"}}>info@gmail.com</span>
                 </p>
               </div>
             </div>

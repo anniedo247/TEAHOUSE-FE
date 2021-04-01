@@ -1,67 +1,100 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
+import React, { useEffect } from "react";
+import {
+  Row,
+  Col,
+  Button,
+  Container,
+  ListGroup,
+  ButtonGroup,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import ClipLoader from "react-spinners";
+import Moment from "react-moment";
 
-import CheckoutSteps from "../components/CheckoutSteps";
-import cartActions from "../redux/actions/cart.actions";
-import orderActions from "../redux/actions/order.actions";
 
-const PlaceOrder = ({ history }) => {
+import orderActions from "../../redux/actions/order.actions";
+
+const OrderDetails = () => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  const history = useHistory();
+  const order = useSelector((state) => state.order.selectedOrder);
+  const loading = useSelector((state) => state.order.loading);
+  const { orderId } = useParams();
 
-  if (!cart.shippingAddress.address) {
-    history.push("/shipping");
-  } else if (!cart.paymentMethod) {
-    history.push("/payment");
-  }
-
-  cart.subTotal = cart.cartItems.reduce((acc, item) => {
-    return item.size === "medium"
-      ? acc + item.quantity * (item.price + 5000)
-      : item.size === "large"
-      ? acc + item.quantity * (item.price + 10000)
-      : acc + item.quantity * item.price;
-  }, 0);
-  cart.deliveryCharge = cart.subTotal > 200000 ? 0 : 10000;
-  cart.total = cart.subTotal + cart.deliveryCharge;
-
-  const handlePlaceOrder = () => {
-    console.log("cart", cart.cartItems);
-    dispatch(
-      orderActions.createOrder({
-        products: cart.cartItems,
-        shippingAddress: cart.shippingAddress,
-        paymentMethod: cart.paymentMethod,
-        deliveryCharge: cart.deliveryCharge,
-        total: cart.total,
-      })
-    );
-    history.push("/placeordersuccess");
+  const handleGoBack = () => {
+    history.push("/admin/orders");
   };
 
+  useEffect(() => {
+    dispatch(orderActions.getSingleOrder(orderId));
+  }, [dispatch, orderId]);
+  console.log("order", order);
+
+  const updateStatus = ()=> {
+    dispatch(orderActions.updateOrderStatus(orderId))
+  }
   return (
-    <div>
+    <div className="mt-5 mb-5 w-100">
+      {/* {loading ? (
+        <div className="d-flex justify-content-center align-items-center">
+          <ClipLoader color="#f86c6b" size={150} loading={true} />
+        </div>
+      ) : ( */}
       <Container
         fluid
-        className="d-flex align-items-center justify-content-center shipping-header"
+        className="d-flex align-items-center justify-content-center admin-order-header mb-5"
       >
-        <span className="header-title">PLACE ORDER</span>
+        <span className="header-title">ORDER DETAILS</span>
       </Container>
-      <CheckoutSteps step1 step2 step3 />
       <Container style={{ width: "100%" }}>
         <Row>
-          <Col md={8}>
+          <div>
+            <h3
+              style={{
+                fontFamily: "'Roboto Condensed', sans-serif",
+                letterSpacing: "0.15em",
+                marginLeft: "35px",
+              }}
+            >
+              {" "}
+              ORDERS # : {order?._id}
+            </h3>
+          </div>
+        </Row>
+        <Row>
+          <Col>
             <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h2
+              <ListGroup.Item className="mt-5">
+                <h3
                   style={{
                     fontFamily: "'Roboto Condensed', sans-serif",
                     letterSpacing: "0.15em",
                   }}
                 >
                   SHIPPING
-                </h2>
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "15px",
+                    fontWeight: "400",
+                  }}
+                >
+                  <strong>Name: </strong>
+                  {order?.userId.name}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "15px",
+                    fontWeight: "400",
+                  }}
+                >
+                  <strong>Email: </strong>
+                  {order?.userId.email}
+                </p>
                 <p
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
@@ -70,19 +103,21 @@ const PlaceOrder = ({ history }) => {
                   }}
                 >
                   <strong>Address: </strong>
-                  {cart.shippingAddress.address}, {cart.shippingAddress.ward}{" "}
-                  {cart.shippingAddress.district}, {cart.shippingAddress.city}
+                  {order?.shippingAddress.address},{" "}
+                  {order?.shippingAddress.ward}{" "}
+                  {order?.shippingAddress.district},{" "}
+                  {order?.shippingAddress.city}
                 </p>
               </ListGroup.Item>
               <ListGroup.Item>
-                <h2
+                <h3
                   style={{
                     fontFamily: "'Roboto Condensed', sans-serif",
                     letterSpacing: "0.15em",
                   }}
                 >
                   PAYMENT METHOD
-                </h2>
+                </h3>
                 <p
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
@@ -91,18 +126,60 @@ const PlaceOrder = ({ history }) => {
                   }}
                 >
                   <strong>Method: </strong>
-                  {cart.paymentMethod}
+                  {order?.paymentMethod}
                 </p>
               </ListGroup.Item>
               <ListGroup.Item>
-                <h2
+                <h3
                   style={{
                     fontFamily: "'Roboto Condensed', sans-serif",
                     letterSpacing: "0.15em",
                   }}
                 >
-                  YOUR ORDER
-                </h2>
+                  DELIVERY STATUS
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "15px",
+                    fontWeight: "400",
+                  }}
+                >
+                  {order?.isDelivered === true ? (
+                    <span>Delivered at <Moment format="YYYY-MM-DD">{order.deliveredAt}</Moment></span>
+                  ) : (
+                    <span>Shipping</span>
+                  )}
+                </p>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <h3
+                  style={{
+                    fontFamily: "'Roboto Condensed', sans-serif",
+                    letterSpacing: "0.15em",
+                  }}
+                >
+                  PAYMENT STATUS
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "15px",
+                    fontWeight: "400",
+                  }}
+                >
+                  {order?.isPaid ? <span>Paid at <Moment format="YYYY-MM-DD">{order.paidAt}</Moment></span> : <span>Pending</span>}
+                </p>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <h3
+                  style={{
+                    fontFamily: "'Roboto Condensed', sans-serif",
+                    letterSpacing: "0.15em",
+                  }}
+                >
+                  ORDER ITEMS
+                </h3>
                 <ListGroup>
                   <ListGroup.Item>
                     <Row>
@@ -132,7 +209,7 @@ const PlaceOrder = ({ history }) => {
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    {cart.cartItems.map((item, index) => (
+                    {order?.products.map((item) => (
                       <Row>
                         <Col>
                           <img
@@ -151,10 +228,14 @@ const PlaceOrder = ({ history }) => {
                                 fontWeight: "600",
                               }}
                             >
-                              {item.name}
+                              <Link to={`/products/${item._id}`}>
+                                {item.name}
+                              </Link>
                             </h6>
                             <p
-                              style={{ fontFamily: "'Montserrat', sans-serif" }}
+                              style={{
+                                fontFamily: "'Montserrat', sans-serif",
+                              }}
                             >
                               {item.size ? <p>size: {item.size}</p> : null}
                             </p>
@@ -228,31 +309,7 @@ const PlaceOrder = ({ history }) => {
                 </ListGroup>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Row>
-                  <Col
-                    lg={9}
-                    style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: "17px",
-                      fontWeight: "600",
-                    }}
-                    className="text-right"
-                  >
-                    {" "}
-                    SUBTOTAL :{" "}
-                  </Col>
-                  <Col
-                    style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: "17px",
-                      fontWeight: "600",
-                    }}
-                    className="text-right"
-                  >
-                    {new Intl.NumberFormat().format(cart.subTotal)} VND
-                  </Col>
-                </Row>
-                <Row>
+                <Row className="mt-3">
                   <Col
                     lg={9}
                     style={{
@@ -273,10 +330,10 @@ const PlaceOrder = ({ history }) => {
                     }}
                     className="text-right"
                   >
-                    {new Intl.NumberFormat().format(cart.deliveryCharge)} VND
+                    {new Intl.NumberFormat().format(order?.deliveryCharge)} VND
                   </Col>
                 </Row>
-                <Row>
+                <Row className="mt-3">
                   <Col
                     lg={9}
                     style={{
@@ -297,15 +354,23 @@ const PlaceOrder = ({ history }) => {
                     }}
                     className="text-right"
                   >
-                    {new Intl.NumberFormat().format(cart.total)} VND
+                    {new Intl.NumberFormat().format(order?.total)} VND
                   </Col>
                 </Row>
                 <Row>
-                  <Col className="text-right mt-3 ">
+                  <Col className="text-right mt-3 mx-4 ">
                     {" "}
-                    <Button onClick={handlePlaceOrder} className="checkout-btn">
-                      PLACE ORDER
-                    </Button>
+                    <ButtonGroup>
+                      {order?.isDelivered ===
+                        false?(
+                          <Button onClick={updateStatus} className="checkout-btn mr-4">
+                            MARK AS DELIVERED
+                          </Button>
+                        ):null}
+                      <Button onClick={handleGoBack} className="checkout-btn">
+                        GO BACK
+                      </Button>
+                    </ButtonGroup>
                   </Col>
                 </Row>
               </ListGroup.Item>
@@ -313,8 +378,9 @@ const PlaceOrder = ({ history }) => {
           </Col>
         </Row>
       </Container>
+      {/* )} */}
     </div>
   );
 };
 
-export default PlaceOrder;
+export default OrderDetails;
