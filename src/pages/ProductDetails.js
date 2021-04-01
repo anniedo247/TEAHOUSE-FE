@@ -10,6 +10,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import cartActions from "../redux/actions/cart.actions";
 import reviewActions from "../redux/actions/review.actions";
 import productActions from "../redux/actions/product.actions";
+import authActions from "../redux/actions/auth.actions"
 import Review from "../components/Review";
 
 const ProductDetails = () => {
@@ -47,7 +48,10 @@ const ProductDetails = () => {
       reviewActions.createReview(productId, reviewTitle, reviewBody, rating)
     );
   };
-
+  const handleFavorite = () => {
+    console.log("id",productId)
+  dispatch(authActions.updateFavorite(productId))
+  }
   const handleMinus = () => {
     setQuantity(quantity - 1);
   };
@@ -181,8 +185,7 @@ const ProductDetails = () => {
             </div>
             <Row>
               <div className="add-to-wishlist">
-                {product && product.isFavorite=== false?<FontAwesomeIcon icon={faHeart} size="lg" color="black" />:<FontAwesomeIcon icon={faHeart} size="lg" color="#98a86d" />}
-                 
+                <FontAwesomeIcon onClick={handleFavorite} icon={faHeart} size="lg" color="black" />
                 <span className="ml-3">Add to wishlist</span>
               </div>
             </Row>

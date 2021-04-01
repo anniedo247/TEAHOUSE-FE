@@ -46,6 +46,13 @@ const authReducer = (state = initialState, action) => {
       return {...state,loading: false, user:{...state.user, payload}}
     case types.UPDATE_CURRENT_USER_PROFILE_FAILURE:
       return {...state, loading: false}
+    //UPDATE FAVORITE
+    case types.UPDATE_FAVORITE_REQUEST:
+      return {...state, loading: true};
+    case types.UPDATE_FAVORITE_SUCCESS:
+      return {...state,loading: false, user:{...state.user, payload}}
+    case types.UPDATE_FAVORITE_FAILURE:
+      return {...state, loading: false}
     // Admin get user info
     case types.GET_OTHER_USER_REQUEST:
       return {...state, loading: true};

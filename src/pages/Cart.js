@@ -36,7 +36,7 @@ const Cart = () => {
       >
         <span className="header-title">SHOPPING CART</span>
       </Container>
-      <Container style={{paddingTop:"200px",paddingBottom:"200px"}}>
+      <Container style={{minHeight:"400px"}}>
         {cartItems.length === 0 ? (
           <h5 style={{
             fontFamily: "'Montserrat', sans-serif",

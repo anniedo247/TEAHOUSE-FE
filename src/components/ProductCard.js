@@ -150,7 +150,7 @@ export const ProductCard = ({ product, handleClickProduct }) => {
                           value="medium"
                           onChange={(e) => setSize(e.target.value)}
                         />
-                        <label for="medium">Medium(+5,000 VND)</label>
+                        <label for="medium">Medium(+5)</label>
 
                         <input
                           className="ml-3"
