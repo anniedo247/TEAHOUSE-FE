@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import Moment from "react-moment";
@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faEye } from "@fortawesome/free-solid-svg-icons";
 
 import orderActions from "../../redux/actions/order.actions";
-import PaginationBar from "../../components/PaginationBar"
+import PaginationBar from "../../components/PaginationBar";
 
 const Orders = ({ history }) => {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const Orders = ({ history }) => {
   const limit = 10;
 
   useEffect(() => {
-    dispatch(orderActions.getAllOrders(pageNum,limit));
-  }, [dispatch,pageNum,limit]);
+    dispatch(orderActions.getAllOrders(pageNum, limit));
+  }, [dispatch, pageNum, limit]);
 
   const handleClickOrder = (id) => {
     history.push(`/admin/orders/${id}`);
@@ -45,6 +45,7 @@ const Orders = ({ history }) => {
               <th>ID</th>
               <th>USER</th>
               <th>DATE</th>
+              <th>PAID</th>
               <th></th>
               <th></th>
             </tr>
@@ -62,6 +63,17 @@ const Orders = ({ history }) => {
                 <td>{order.userId.name}</td>
                 <td>
                   <Moment format="YYYY-MM-DD">{order.createdAt}</Moment>
+                </td>
+                <td>
+                  {" "}
+                  {order?.isPaid ? (
+                    <span>
+                      Paid
+                     
+                    </span>
+                  ) : (
+                    <span>Pending</span>
+                  )}
                 </td>
                 <td>
                   <FontAwesomeIcon
@@ -85,8 +97,11 @@ const Orders = ({ history }) => {
           ))}
         </Table>
       </Container>
-      <PaginationBar pageNum={pageNum} setPageNum={setPageNum} totalPages={totalPages}/>
-
+      <PaginationBar
+        pageNum={pageNum}
+        setPageNum={setPageNum}
+        totalPages={totalPages}
+      />
     </>
   );
 };

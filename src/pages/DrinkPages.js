@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import ClipLoader from "react-spinners";
 import { ProductCard } from "../components/ProductCard";
 import productActions from "../redux/actions/product.actions";
 import PaginationBar from "../components/PaginationBar";
@@ -12,6 +13,7 @@ const DrinkPages = () => {
   const products = useSelector((state) => state.product.products);
   const totalPages = useSelector((state) => state.product.totalPages);
   const searchTerm = useSelector((state) => state.product.searchTerm);
+  const loading = useSelector((state) => state.product.loading);
   const [pageNum, setPageNum] = useState(1);
   const limit = 6;
   const [category, setCategory] = useState("drink");
@@ -33,51 +35,62 @@ const DrinkPages = () => {
 
   return (
     <div>
-      <Container fluid className="text-center drink-header">
-        <h1 className="header-title">DRINK</h1>
-        <ul className="menu-list">
-          <button
-            className="header-menu-item"
-            value="drink"
-            onClick={(e) => setCategory(e.target.value)}
-          >
-            ALL
-          </button>
-          <button
-            className="header-menu-item"
-            value="fruit tea"
-            onClick={(e) => setCategory(e.target.value)}
-          >
-            FRUIT TEA
-          </button>
-          <button
-            className="header-menu-item"
-            value="flavored tea"
-            onClick={(e) => setCategory(e.target.value)}
-          >
-            FLAVORED TEA
-          </button>
-          <button
-            className="header-menu-item"
-            value="tea latte"
-            onClick={(e) => setCategory(e.target.value)}
-          >
-            TEA LATTE
-          </button>
-        </ul>
-      </Container>
-      <Container className="py-5 d-flex justify-content-center">
-        <Row className="justify-content-center" >
-          {products.map((p) => (
-            <ProductCard product={p} handleClickProduct={handleClickProduct} />
-          ))}
-        </Row>
-      </Container>
-      <PaginationBar
-        pageNum={pageNum}
-        setPageNum={setPageNum}
-        totalPages={totalPages}
-      />
+      {loading ? (
+        <div className="d-flex justify-content-center align-items-center">
+          <ClipLoader color="#f86c6b" size={150} loading={true} />
+        </div>
+      ) : (
+        <>
+          <Container fluid className="text-center drink-header">
+            <h1 className="header-title">DRINK</h1>
+            <ul className="menu-list">
+              <button
+                className="header-menu-item"
+                value="drink"
+                onClick={(e) => setCategory(e.target.value)}
+              >
+                ALL
+              </button>
+              <button
+                className="header-menu-item"
+                value="fruit tea"
+                onClick={(e) => setCategory(e.target.value)}
+              >
+                FRUIT TEA
+              </button>
+              <button
+                className="header-menu-item"
+                value="flavored tea"
+                onClick={(e) => setCategory(e.target.value)}
+              >
+                FLAVORED TEA
+              </button>
+              <button
+                className="header-menu-item"
+                value="tea latte"
+                onClick={(e) => setCategory(e.target.value)}
+              >
+                TEA LATTE
+              </button>
+            </ul>
+          </Container>
+          <Container className="py-5 d-flex justify-content-center">
+            <Row className="justify-content-center">
+              {products.map((p) => (
+                <ProductCard
+                  product={p}
+                  handleClickProduct={handleClickProduct}
+                />
+              ))}
+            </Row>
+          </Container>
+          <PaginationBar
+            pageNum={pageNum}
+            setPageNum={setPageNum}
+            totalPages={totalPages}
+          />
+        </>
+      )}
     </div>
   );
 };

@@ -11,7 +11,7 @@ const OrderDone = () => {
       >
         <span className="header-title">PLACE ORDER</span>
       </Container>
-      <div className="text-center mt-5">
+      <div style={{minHeight:"400px"}} className="text-center mt-5">
         <h1>Thanks for your order.</h1>
         <Link to="/"> Continue Shopping</Link>
       </div>

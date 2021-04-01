@@ -42,7 +42,7 @@ const Cart = () => {
             fontFamily: "'Montserrat', sans-serif",
             fontSize: "1.7rem",
             fontWeight: "400",
-            
+            minHeight:"400px"
           }}>
             Your cart is empty. <Link to="/">Go back</Link>
           </h5>
