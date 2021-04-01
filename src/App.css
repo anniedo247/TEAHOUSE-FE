@@ -139,6 +139,14 @@
   height: 400px;
   color: white;
 }
+.contact-header {
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617263788/teaHouse/photo-1521134976835-9963f2185519_t7vk5m.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
+  height: 400px;
+  color: white;
+}
 .user-header {
   background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616916709/teaHouse/photo-1585185160068-8175b6a39d84_inu8ox.jpg");
   background-attachment: fixed;

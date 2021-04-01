@@ -12,6 +12,8 @@ import NotFoundPage from "../../pages/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage";
 import DrinkPages from "../../pages/DrinkPages";
 import TeaPages from "../../pages/TeaPages";
+import ContactPage from "../../pages/ContactPage";
+
 import GiftPage from "../../pages/GiftPage"
 import ProductDetails from "../../pages/ProductDetails";
 import Cart from "../../pages/Cart"
@@ -34,6 +36,7 @@ const PublicLayout = () => {
           <Route exact path="/drink" component={DrinkPages}/>
           <Route exact path="/tea" component={TeaPages}/>
           <Route exact path="/gift" component={GiftPage}/>
+          <Route exact path="/contact" component={ContactPage}/>
           <Route exact path="/products/:productId" component={ProductDetails}/>
           <Route exact path="/cart/:productId?" component={Cart}/>
           <PrivateRoute exact path="/shipping" component={Shipping}/>
