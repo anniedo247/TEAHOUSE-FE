@@ -32,7 +32,8 @@ const LoginPage = ({location,history}) => {
     <div>
       {loading ? (
         <div className="d-flex justify-content-center align-items-center">
-          <ClipLoader color="#f86c6b" size={150} loading={true} />
+          <img loading={true} className="loaderImage" src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"/>
+          {/* <ClipLoader color="#f86c6b" size={150} loading={true} /> */}
         </div>      ) : (
         <div>
           <Container fluid style={{ width: "50%", marginTop: "30px", marginBottom:"50px" }}>
