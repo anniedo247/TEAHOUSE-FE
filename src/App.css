@@ -268,7 +268,7 @@ body {
 }
 .product-card:hover .product-card--image-top {
   opacity: 1;
-  background: linear-gradient(180deg, rgba(186, 220, 138, 0.6) 0%, rgba(255,255,255,0) 20%);
+  background: linear-gradient(180deg, rgba(189, 230, 132, 0.6) 0%, rgba(255,255,255,0) 20%);
   transition-duration: 0.5s;
 }
 .heart-icon {
@@ -280,7 +280,8 @@ body {
 .view-icon {
   position: absolute;
   top: 15px;
-  left: 70px;
+  left: 40px;
+  font-size: 20px;
   color: white;
 }
 .add-to-cart {

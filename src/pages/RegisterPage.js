@@ -4,12 +4,13 @@ import { Form as BootstrapForm, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import ClipLoader from "react-spinners/ClipLoader";
-import { Redirect } from "react-router-dom";
+import { Redirect,useHistory } from "react-router-dom";
 import authActions from "../redux/actions/auth.actions";
 import * as yup from "yup";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
+  const history=useHistory()
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.auth.loading);
 
@@ -30,6 +31,7 @@ const RegisterPage = () => {
       {loading ? (
         <img
           loading={true}
+          style={{ width: "60px" }}
           className="loaderImage"
           src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"
         />
@@ -76,7 +78,9 @@ const RegisterPage = () => {
                     email: data.email,
                     password: data.password,
                   })
+                  
                 );
+                history.push("/")
               }}
             >
               {({ errors, touched }) => (

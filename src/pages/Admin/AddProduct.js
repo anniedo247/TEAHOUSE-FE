@@ -55,7 +55,7 @@ const AddProduct = () => {
       </Container>
       <div
         className="d-flex justify-content-center"
-        style={{ marginTop: "30px" }}
+        style={{ marginTop: "30px",marginBottom:"40px" }}
       >
         <Form
           onSubmit={onSubmit}

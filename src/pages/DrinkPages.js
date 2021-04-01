@@ -75,7 +75,7 @@ const DrinkPages = () => {
             </ul>
           </Container>
           <Container className="py-5 d-flex justify-content-center">
-            <Row className="justify-content-center">
+            <Row >
               {products.map((p) => (
                 <ProductCard
                   product={p}

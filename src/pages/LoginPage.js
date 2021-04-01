@@ -33,6 +33,7 @@ const LoginPage = ({ location, history }) => {
       {loading ? (
         <div className="d-flex justify-content-center align-items-center">
           <img
+            style={{ width: "60px" }}
             loading={true}
             className="loaderImage"
             src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"
@@ -55,11 +56,15 @@ const LoginPage = ({ location, history }) => {
                 {" "}
                 LOGIN
               </h2>
-              <h4 style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: "20px",
-                      fontWeight: "600",
-                    }}>Great to have you back!</h4>
+              <h4
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Great to have you back!
+              </h4>
             </div>
             <Formik
               validateOnBlur={false}

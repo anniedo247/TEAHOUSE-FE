@@ -47,14 +47,14 @@ export const ProductCard = ({ product, handleClickProduct }) => {
 
   return (
     <React.Fragment>
-      <Col lg={4} md={6} sm={12} className="d-flex justify-content-center">
+      <Col xl={4} md={6} sm={12} className="d-flex justify-content-center">
         <div className=" mb-5 product-card">
           <div className="product-card--wrapper">
             <img src={product.images[0]} />
             <div className="product-card--image-top">
-              <div className="heart-icon">
+              {/* <div className="heart-icon">
                 <FontAwesomeIcon icon={faHeart} size="lg" />
-              </div>
+              </div> */}
               <div className="view-icon">
                 <FontAwesomeIcon onClick={handleShow} icon={faEye} size="lg" />
               </div>
