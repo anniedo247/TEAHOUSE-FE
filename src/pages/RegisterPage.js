@@ -28,16 +28,38 @@ const RegisterPage = () => {
   return (
     <div>
       {loading ? (
-        <ClipLoader color="blue" loading={loading} size={150} />
+        <img
+          loading={true}
+          className="loaderImage"
+          src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"
+        />
       ) : (
         <div>
-          <Container fluid style={{ width: "50%", marginTop: "30px" }}>
+          <Container
+            fluid
+            style={{ width: "50%", marginTop: "30px", marginBottom: "50px" }}
+          >
             <div className="text-center p-terms">
-              <h2> REGISTER</h2>
-              <h4>It's quick and easy</h4>
+              <h2
+                style={{
+                  fontFamily: "'Roboto Condensed', sans-serif",
+                  letterSpacing: "0.15em",
+                }}
+              >
+                {" "}
+                REGISTER
+              </h2>
+              <h4
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                It's quick and easy
+              </h4>
             </div>
             <Formik
-            
               validateOnBlur={false}
               validationSchema={registerSchema}
               initialValues={{
@@ -47,12 +69,17 @@ const RegisterPage = () => {
                 passwordConfirmation: "",
               }}
               onSubmit={(data) => {
-                console.log(data.name)
-                dispatch(authActions.register({name:data.name,email:data.email,password:data.password}));
-
+                console.log(data.name);
+                dispatch(
+                  authActions.register({
+                    name: data.name,
+                    email: data.email,
+                    password: data.password,
+                  })
+                );
               }}
             >
-              {({ errors,touched}) => (
+              {({ errors, touched }) => (
                 <Form className="mt-4">
                   <BootstrapForm.Group>
                     <Field
@@ -63,7 +90,7 @@ const RegisterPage = () => {
                     />
                   </BootstrapForm.Group>
                   <div className="error-msg">
-                    {errors.name && touched.name? errors.name : null}
+                    {errors.name && touched.name ? errors.name : null}
                   </div>
                   <BootstrapForm.Group>
                     {" "}
@@ -75,7 +102,7 @@ const RegisterPage = () => {
                     />
                   </BootstrapForm.Group>
                   <div className="error-msg">
-                    {errors.email && touched.email? errors.email : null}
+                    {errors.email && touched.email ? errors.email : null}
                   </div>
                   <BootstrapForm.Group>
                     <Field
@@ -87,7 +114,9 @@ const RegisterPage = () => {
                   </BootstrapForm.Group>
 
                   <div className="error-msg">
-                    {errors.password && touched.password ? errors.password : null}
+                    {errors.password && touched.password
+                      ? errors.password
+                      : null}
                   </div>
                   <BootstrapForm.Group>
                     <Field
@@ -104,7 +133,9 @@ const RegisterPage = () => {
                       : null}
                   </div>
 
-                  <Button className="auth-button" type="submit">REGISTER</Button>
+                  <Button className="auth-button" type="submit">
+                    REGISTER
+                  </Button>
                 </Form>
               )}
             </Formik>

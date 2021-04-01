@@ -75,7 +75,7 @@ const AboutUsPage = () => {
                 fontFamily: "'Nunito Sans', sans-serif",
                 fontSize: "17px",
                 letterSpacing: "0.05em",
-                marginTop: "20px",
+                margin: "20px 40px",
               }}
             >
               We believe that tea is not just a beverage but a way of life, and
@@ -107,7 +107,7 @@ const AboutUsPage = () => {
                 fontFamily: "'Nunito Sans', sans-serif",
                 fontSize: "17px",
                 letterSpacing: "0.05em",
-                marginTop: "20px",
+                margin: "20px 40px",
               }}
             >
               Encouraging creativity within our ranks is just as important. We

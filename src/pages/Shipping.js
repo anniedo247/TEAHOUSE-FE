@@ -34,7 +34,7 @@ import cartActions from "../redux/actions/cart.actions";
       <CheckoutSteps step1 />
       <div
         className="d-flex justify-content-center"
-        style={{ marginTop: "30px" }}
+        style={{ marginTop: "30px",marginBottom:"30px",minHeight:"400px" }}
       >
         <Form
           onSubmit={onSubmit}

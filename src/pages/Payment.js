@@ -26,6 +26,7 @@ import cartActions from "../redux/actions/cart.actions";
       
       <Container
         fluid
+        
         className="d-flex align-items-center justify-content-center shipping-header"
       >
         <span className="header-title">PAYMENT</span>
@@ -33,7 +34,7 @@ import cartActions from "../redux/actions/cart.actions";
       <CheckoutSteps step1 step2/>
       <div
         className="d-flex justify-content-center"
-        style={{ marginTop: "30px" }}
+        style={{ marginTop: "30px",marginBottom:"30px",minHeight:"400px" }}
       >
         <Form
           onSubmit={onSubmit}

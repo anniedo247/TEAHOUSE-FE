@@ -78,9 +78,9 @@ const PublicNavbar = () => {
         <FontAwesomeIcon icon={faUser} size="lg" color="black" />
       </Link>
       <span>{user?.name}</span>
-      <Link className="nav-icon" to="/users/favorite">
+      {/* <Link className="nav-icon" to="/users/favorite">
         <FontAwesomeIcon icon={faHeart} size="lg" color="black" />
-      </Link>
+      </Link> */}
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
@@ -106,9 +106,9 @@ const PublicNavbar = () => {
       <Link className="nav-icon" to="/users/me">
         <FontAwesomeIcon icon={faUser} size="lg" color="black" />
       </Link>
-      <Link className="nav-icon" to="/users/favorite">
+      {/* <Link className="nav-icon" to="/users/favorite">
         <FontAwesomeIcon icon={faHeart} size="lg" color="black" />
-      </Link>
+      </Link> */}
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
