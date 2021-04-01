@@ -31,8 +31,9 @@ const LoginPage = ({location,history}) => {
   return (
     <div>
       {loading ? (
-        <ClipLoader color="blue" loading={loading} size={150} />
-      ) : (
+        <div className="d-flex justify-content-center align-items-center">
+          <ClipLoader color="#f86c6b" size={150} loading={true} />
+        </div>      ) : (
         <div>
           <Container fluid style={{ width: "50%", marginTop: "30px", marginBottom:"50px" }}>
             <div className="text-center p-terms">
