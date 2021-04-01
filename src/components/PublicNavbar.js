@@ -19,6 +19,7 @@ const PublicNavbar = () => {
   const [searchInput, setSearchInput] = useState("")
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const cartItems = useSelector((state)=> state.cart.cartItems)
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.auth.loading);
 
@@ -86,6 +87,7 @@ const PublicNavbar = () => {
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
+      <span className="mr-2" >({cartItems.length})</span>
       <FontAwesomeIcon
         onClick={handleLogout}
         icon={faSignOutAlt}
@@ -113,6 +115,7 @@ const PublicNavbar = () => {
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
+      <span className="mr-2" >({cartItems.length})</span>
     </div>
   );
 

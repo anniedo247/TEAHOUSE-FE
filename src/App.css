@@ -56,7 +56,19 @@
   color: #98a86d !important;
 }
 .nav-icon {
-  margin-right: 20px;
+  margin-right:0px;
+  margin-left: 10px;
+}
+.cartIcon {
+  position: relative
+}
+.cartLength {
+  background-color:#98a86d ;
+  color:white;
+  padding:0 5px;
+  border-radius: 50%;
+  position: absolute;
+  
 }
 /*-----register-----*/
 .error-msg {
