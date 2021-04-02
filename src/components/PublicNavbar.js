@@ -217,8 +217,8 @@ const PublicNavbar = () => {
               <Nav.Link className="nav-menu" as={Link} to="/gift">
                 GIFT SETS
               </Nav.Link>
-              <Nav.Link className="nav-menu" as={Link} to="/contact">
-                CONTACT US
+              <Nav.Link className="nav-menu" as={Link} to="/aboutus">
+                ABOUT US
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
