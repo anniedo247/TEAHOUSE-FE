@@ -84,7 +84,9 @@ const PublicNavbar = () => {
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
-      <span className="mr-2">({cartItems.length})</span>
+      <span className="mr-2">
+        ({cartItems.reduce((acc, i) => acc + i.quantity, 0)})
+      </span>
       <FontAwesomeIcon
         onClick={handleLogout}
         icon={faSignOutAlt}
@@ -112,7 +114,9 @@ const PublicNavbar = () => {
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
-      <span className="mr-2">({cartItems.length})</span>
+      <span className="mr-2">
+        ({cartItems.reduce((acc, i) => acc + i.quantity, 0)})
+      </span>
     </div>
   );
 
