@@ -145,7 +145,6 @@ const HomePage = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
             </p>
-            
           </Col>
           <Col xl={6}>
             <Slider autoplay={3000}>
@@ -173,90 +172,162 @@ const HomePage = () => {
         <TestimonialsCarousel />
         <Row className="justify-content-center">
           <figure class="snip1273">
-            <img
-              src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617297370/teaHouse/photo-1606598296574-76984d958f84_bylzpg.jpg"
-             
-            />
+            <img src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617297370/teaHouse/photo-1606598296574-76984d958f84_bylzpg.jpg" />
             <figcaption>
               <h3>Hoan Kiem Outlet</h3>
-              
-              <p >
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faLocationArrow}
-                    size="md"
-                    color="black"
-                  />
-                 <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>50 Ba Trieu, Hoan Kiem, Ha Noi</span> 
-                </p>
-                <p>
-                  {" "}
-                  <FontAwesomeIcon icon={faPhoneAlt} size="md" color="black" />
-                  <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>+84 000 000 000</span>
-                </p>
-                <p>
-                  {" "}
-                  <FontAwesomeIcon icon={faEnvelope} size="md" color="black" />
-                  <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>info@gmail.com</span>
-                </p>
+
+              <p>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faLocationArrow}
+                  size="md"
+                  color="white"
+                />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  50 Ba Trieu, Hoan Kiem, Ha Noi
+                </span>
+              </p>
+              <p>
+                {" "}
+                <FontAwesomeIcon icon={faPhoneAlt} size="md" color="white" />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  +84 000 000 000
+                </span>
+              </p>
+              <p>
+                {" "}
+                <FontAwesomeIcon icon={faEnvelope} size="md" color="white" />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  info@gmail.com
+                </span>
+              </p>
             </figcaption>
             <a href="#"></a>
           </figure>
           <figure class="snip1273">
-            <img
-              src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617297370/teaHouse/photo-1523368749929-6b2bf370dbf8_vsd0ys.jpg"
-              
-            />
+            <img src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617297370/teaHouse/photo-1523368749929-6b2bf370dbf8_vsd0ys.jpg" />
             <figcaption>
               <h3>Aeon Mall Outlet</h3>
-              <p >
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faLocationArrow}
-                    size="md"
-                    color="black"
-                  />
-                 <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>B1 Aeon Mall, Long Bien, Ha Noi</span> 
-                </p>
-                <p>
-                  {" "}
-                  <FontAwesomeIcon icon={faPhoneAlt} size="md" color="black" />
-                  <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>+84 222 222 222</span>
-                </p>
-                <p>
-                  {" "}
-                  <FontAwesomeIcon icon={faEnvelope} size="md" color="black" />
-                  <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>info@gmail.com</span>
-                </p>
+              <p>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faLocationArrow}
+                  size="md"
+                  color="white"
+                />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  B1 Aeon Mall, Long Bien, Ha Noi
+                </span>
+              </p>
+              <p>
+                {" "}
+                <FontAwesomeIcon icon={faPhoneAlt} size="md" color="white" />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  +84 222 222 222
+                </span>
+              </p>
+              <p>
+                {" "}
+                <FontAwesomeIcon icon={faEnvelope} size="md" color="white" />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  info@gmail.com
+                </span>
+              </p>
             </figcaption>
             <a href="#"></a>
           </figure>
           <figure class="snip1273">
-            <img
-              src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617297373/teaHouse/photo-1612376393268-b1369f39e4c4_ozmcmm.jpg"
-              
-            />
+            <img src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617297373/teaHouse/photo-1612376393268-b1369f39e4c4_ozmcmm.jpg" />
             <figcaption>
               <h3>Royal Oulet</h3>
-              <p >
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faLocationArrow}
-                    size="md"
-                    color="black"
-                  />
-                 <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>Level 2, VinCom Mega Mall, Thanh Xuan</span> 
-                </p>
-                <p>
-                  {" "}
-                  <FontAwesomeIcon icon={faPhoneAlt} size="md" color="black" />
-                  <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>+84 111 111 111</span>
-                </p>
-                <p>
-                  {" "}
-                  <FontAwesomeIcon icon={faEnvelope} size="md" color="black" />
-                  <span style={{fontFamily:"'Montserrat', sans-serif",fontSize:"17px",fontWeight:"400"}}>info@gmail.com</span>
-                </p>
+              <p>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faLocationArrow}
+                  size="md"
+                  color="white"
+                />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Level 2, VinCom Mega Mall, Thanh Xuan
+                </span>
+              </p>
+              <p>
+                {" "}
+                <FontAwesomeIcon icon={faPhoneAlt} size="md" color="white" />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  +84 111 111 111
+                </span>
+              </p>
+              <p>
+                {" "}
+                <FontAwesomeIcon icon={faEnvelope} size="md" color="white" />
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "17px",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  info@gmail.com
+                </span>
+              </p>
             </figcaption>
             <a href="#"></a>
           </figure>
