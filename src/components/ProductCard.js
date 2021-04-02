@@ -140,7 +140,7 @@ export const ProductCard = ({ product, handleClickProduct }) => {
                           onChange={(e) => setSize(e.target.value)}
                           checked
                         />
-                        <label for="small">Small</label>
+                        <label className="ml-2" for="small">Small</label>
 
                         <input
                           className="ml-3"
@@ -150,7 +150,7 @@ export const ProductCard = ({ product, handleClickProduct }) => {
                           value="medium"
                           onChange={(e) => setSize(e.target.value)}
                         />
-                        <label for="medium">Medium(+5)</label>
+                        <label className="ml-2" for="medium">Medium(+5₫ )</label>
 
                         <input
                           className="ml-3"
@@ -160,7 +160,7 @@ export const ProductCard = ({ product, handleClickProduct }) => {
                           value="large"
                           onChange={(e) => setSize(e.target.value)}
                         />
-                        <label>Large(+10,000 VND)</label>
+                        <label className="ml-2">Large(+10₫ )</label>
                       </div>
                     </div>
                   ) : null}
