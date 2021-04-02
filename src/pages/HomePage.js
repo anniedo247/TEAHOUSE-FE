@@ -27,7 +27,7 @@ const HomePage = () => {
     <div>
       <Carousel />
       <Container fluid className="mt-5">
-        <Row>
+        <Row className="d-flex justify-content-center">
           <figure class="snip1256">
             <img
               src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617158230/teaHouse/phuong-nguyen-DgW9B48pRb4-unsplash_xzhhks.jpg"
@@ -83,7 +83,7 @@ const HomePage = () => {
           </figure>
         </Row>
         <Row className="mt-5">
-          <Col xl={6}>
+          <Col xl={6} className="d-none d-xl-block">
             <img
               style={{ maxWidth: "700px" }}
               src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617176676/teaHouse/lotus_stk7le.png"
