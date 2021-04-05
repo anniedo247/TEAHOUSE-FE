@@ -5,13 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import ClipLoader from "react-spinners";
-
 import PaginationBar from "../../components/PaginationBar";
 
 import orderActions from "../../redux/actions/order.actions";
 import { useHistory } from "react-router-dom";
 
-const UserOrders = () => {
+const Orders = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [pageNum, setPageNum] = useState(1);
@@ -21,8 +20,12 @@ const UserOrders = () => {
   const loading = useSelector((state) => state.order.loading);
   const totalPages = useSelector((state) => state.order.totalPages);
 
+  const updateStatus = (id) => {
+    dispatch(orderActions.updateOrderStatus(id));
+  };
+
   const handleClickOrder = (id) => {
-    history.push(`/users/me/orders/${id}`);
+    history.push(`/staff/orders/${id}`);
   };
 
   useEffect(() => {
@@ -46,7 +49,7 @@ const UserOrders = () => {
               }}
             >
               {" "}
-              MY ORDERS
+              ORDERS
             </h1>
           </div>
         </Row>
@@ -63,7 +66,8 @@ const UserOrders = () => {
                 <th>DATE</th>
                 <th>ORDER #</th>
                 <th>TOTAL</th>
-                <th>DELIVERY STATUS</th>
+                <th>PAYMENT STATUS</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -83,11 +87,7 @@ const UserOrders = () => {
                   <td>{new Intl.NumberFormat().format(order.total)} VND</td>
 
                   <td>
-                    {order.isDelivery ? (
-                      <span>Delivered</span>
-                    ) : (
-                      <span>Shipping</span>
-                    )}
+                    {order.isPaid ? <span>Paid</span> : <span>Pending</span>}
                   </td>
                   <td>
                     <FontAwesomeIcon
@@ -97,6 +97,14 @@ const UserOrders = () => {
                       color="black"
                       size="md"
                     />
+                  </td>
+                  <td>
+                    <button
+                      className="markAsPaid-btn"
+                      onClick={() => updateStatus(order._id)}
+                    >
+                      Mark as Paid
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -111,9 +119,9 @@ const UserOrders = () => {
           />
       </Container>
 
-     )}
+       )} 
     </div>
   );
 };
 
-export default UserOrders;
+export default Orders;

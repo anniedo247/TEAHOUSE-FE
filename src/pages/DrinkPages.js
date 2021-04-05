@@ -74,7 +74,7 @@ const DrinkPages = () => {
               </button>
             </ul>
           </Container>
-          <Container className="py-5 d-flex justify-content-center">
+          <Container style={{minHeight:"80vh"}} className="py-5 d-flex justify-content-center">
             <Row >
               {products.map((p) => (
                 <ProductCard

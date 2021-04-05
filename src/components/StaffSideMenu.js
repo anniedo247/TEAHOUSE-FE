@@ -30,7 +30,7 @@ const StaffSideMenu = () => {
               letterSpacing: "0.2em",
             }}
             as={NavLink}
-            to="/staff/outletorders"
+            to="/staff/orders"
             activeClassName="active"
             strict={true}
           >

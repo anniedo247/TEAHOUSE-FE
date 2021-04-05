@@ -13,7 +13,7 @@ const userReducer = (state = initialState, action) => {
     case types.GET_ALL_USERS_REQUEST:
       return { ...state, loading: true };
     case types.GET_ALL_USERS_SUCCESS:
-      return { ...state, users: payload.users, loading: false };
+      return { ...state, users: payload.users,totalPages: payload.totalPages, loading: false };
     case types.GET_ALL_USERS_FAILURE:
       return { ...state, loading: false };
     default:

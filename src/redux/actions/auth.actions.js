@@ -65,7 +65,8 @@ const updateFavorite = (productId) => async (dispatch) => {
   try {
     const res = await api.put("/users/me/favorite", { productId});
     dispatch({ type: types.UPDATE_FAVORITE_SUCCESS, payload: res.data.data });
-    toast.success("Add to favorite success");
+    dispatch(getCurrentUser());
+    
   } catch (error) {
     dispatch({ type: types.UPDATE_FAVORITE_FAILURE, payload: error });
   }

@@ -49,7 +49,7 @@ const PlaceOrder = ({ history }) => {
         <span className="header-title">PLACE ORDER</span>
       </Container>
       <CheckoutSteps step1 step2 step3 />
-      <Container style={{ width: "100%" }}>
+      <Container style={{ width: "100%",minHeight:"80vh" }}>
         <Row>
           <Col md={8}>
             <ListGroup variant="flush">

@@ -39,7 +39,7 @@ const RegisterPage = () => {
         <div>
           <Container
             fluid
-            style={{ width: "50%", marginTop: "30px", marginBottom: "50px" }}
+            style={{ width: "50%", marginTop: "30px", marginBottom: "50px",minHeight:"80vh" }}
           >
             <div className="text-center p-terms">
               <h2

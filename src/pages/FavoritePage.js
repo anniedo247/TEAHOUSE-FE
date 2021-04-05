@@ -35,7 +35,7 @@ const FavoritePage = () => {
     <Container fluid className="text-center favorite-header">
         <h1 className="header-title">FAVORITE</h1>
     </Container>
-    <Container className="py-5 d-flex justify-content-center">
+    <Container style={{minHeight:"80vh"}} className="py-5 d-flex justify-content-center">
       <Row>
       {products.map((p)=>(
         <ProductCard product ={p} handleClickProduct={handleClickProduct}/>

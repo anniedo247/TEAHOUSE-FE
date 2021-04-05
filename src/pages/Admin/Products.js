@@ -9,23 +9,33 @@ import { useHistory } from "react-router-dom";
 
 import productActions from "../../redux/actions/product.actions";
 import PaginationBar from "../../components/PaginationBar"
+import SearchBar from "../../components/SearchBar"
 
 const Products = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const products = useSelector((state) => state.product.products);
   const totalPages = useSelector((state) => state.product.totalPages);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const loading = useSelector((state) => state.product.loading);
   const [pageNum, setPageNum] = useState(1);
   const limit = 10;
+  
+  const onChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  const onSubmit = (e) => {
+    e.preventDefault(e);
+    setSearchTerm(searchTerm);
+  };
 
   const handleClickProduct = (id) => {
     history.push(`/admin/products/${id}/edit`);
   };
   useEffect(() => {
-    dispatch(productActions.getAllProducts(pageNum,limit));
-  }, [dispatch,pageNum,limit]);
+    dispatch(productActions.getAllProducts(pageNum,limit,"",searchTerm));
+  }, [dispatch,pageNum,limit,searchTerm]);
 
   const onDeleteProduct = (id) => {
     console.log("productIs", id);
@@ -33,14 +43,20 @@ const Products = () => {
   };
 
   return (
-    <>
-      <Container
-        fluid
-        className="d-flex align-items-center justify-content-center admin-product-header"
-      >
-        <span className="header-title">PRODUCTS</span>
-      </Container>
-      <Container fluid className="py-5" style={{ width: "70%" }}>
+    <div className="mt-5 text-center w-75">
+      {loading ? (
+        <div style={{padding:"40px"}} className="d-flex justify-content-center align-items-center">
+          <img style={{width:"60px"}} loading={true} className="loaderImage" src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"/>
+        </div>
+      ) : (
+      <>
+      <Container>
+        <div className="text-left">
+        <SearchBar
+                searchInput={searchTerm}
+                onChange={onChange}
+                onSubmit={onSubmit}
+              />        </div>
         <div className="text-right">
           <Button
             as={Link}
@@ -101,12 +117,14 @@ const Products = () => {
                 </td>
               </tr>
             </tbody>
-          ))}
+           ))}
         </Table>
       </Container>
       <PaginationBar pageNum={pageNum} setPageNum={setPageNum} totalPages={totalPages}/>
-      )
-    </>
+      </>
+      )}
+  
+    </div>
   );
 };
 

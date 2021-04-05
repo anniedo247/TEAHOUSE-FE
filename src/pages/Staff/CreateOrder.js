@@ -9,7 +9,7 @@ import {
   ListGroup,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus,faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 
 import authActions from "../../redux/actions/auth.actions";
@@ -17,6 +17,7 @@ import productActions from "../../redux/actions/product.actions";
 import PaginationBar from "../../components/PaginationBar";
 import SearchBar from "../../components/SearchBar";
 import cartActions from "../../redux/actions/cart.actions";
+import orderActions from "../../redux/actions/order.actions"
 
 const CreateOrder = ({ history }) => {
   const dispatch = useDispatch();
@@ -24,13 +25,14 @@ const CreateOrder = ({ history }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
-  const [payment,setPayment]= useState("cash")
+  const [payment, setPayment] = useState("cash");
 
   const currentUser = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
   const products = useSelector((state) => state.product.products);
   const totalPages = useSelector((state) => state.product.totalPages);
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const paymentMethod = useSelector((state) => state.cart.paymentMethod);
 
   const limit = 10;
 
@@ -41,12 +43,30 @@ const CreateOrder = ({ history }) => {
     e.preventDefault(e);
     setSearchTerm(searchTerm);
   };
-  const handleSubmitPayment = (e)=> {
-    console.log("payment",payment)
-    e.preventDefault(e)
-    dispatch(cartActions.savePaymentMethod(payment))
+  const handleSubmitPayment = (e) => {
+    console.log("payment", payment);
+    e.preventDefault(e);
+    dispatch(cartActions.savePaymentMethod(payment));
+  };
 
-  }
+  const subtotal = cartItems.reduce((acc, item) => {
+    return item.size === "medium"
+      ? acc + item.quantity * (item.price + 5000)
+      : item.size === "large"
+      ? acc + item.quantity * (item.price + 10000)
+      : acc + item.quantity * item.price;
+  }, 0)
+  const handlePlaceOrder = () => {
+  
+    dispatch(
+      orderActions.createOrder({
+        products: cartItems,
+        paymentMethod: paymentMethod,
+        deliveryCharge:0,
+        total: subtotal,
+      })
+    );
+  };
   const removeFromCartHandler = (id) => {
     console.log("ihih", id);
     dispatch(cartActions.removeFromCart(id));
@@ -59,9 +79,9 @@ const CreateOrder = ({ history }) => {
   const handleSubQuantity = (id) => {
     dispatch(cartActions.subtractQuantity(id));
   };
-  const handleSize = (e)=> {
-    setSize(e.target.value)
-  }
+  const handleSize = (e) => {
+    setSize(e.target.value);
+  };
   useEffect(() => {
     dispatch(productActions.getAllProducts(pageNum, limit, "", searchTerm));
   }, [dispatch, pageNum, limit, searchTerm]);
@@ -74,7 +94,7 @@ const CreateOrder = ({ history }) => {
   };
   const addToCartHandle = (productId) => {
     if (productId) {
-      console.log("size",size)
+      console.log("size", size);
       dispatch(cartActions.addToCart(productId, quantity, size));
     }
   };
@@ -92,7 +112,7 @@ const CreateOrder = ({ history }) => {
               }}
             >
               {" "}
-              OUTLET: {currentUser?.name.toUpperCase()}
+              OUTLET: {!loading && currentUser && currentUser.name && currentUser.name.toUpperCase()}
             </h1>
           </div>
         </Row>
@@ -120,23 +140,9 @@ const CreateOrder = ({ history }) => {
                         {p.categories[0].name === "drink" ? (
                           <div class="input-group mb-3">
                             <select onChange={handleSize} name="size" id="size">
-                              <option
-                                value="small"
-                              >
-                                small
-                              </option>
-                              <option
-                                
-                                value="medium"
-                              >
-                                medium
-                              </option>
-                              <option
-                                
-                                value="large"
-                              >
-                                large
-                              </option>
+                              <option value="small">small</option>
+                              <option value="medium">medium</option>
+                              <option value="large">large</option>
                             </select>
                           </div>
                         ) : null}
@@ -161,210 +167,189 @@ const CreateOrder = ({ history }) => {
           </Col>
           <Col>
             <Container style={{ minHeight: "400px" }}>
-              
-                <div className="mt-5">
-                  <Row>
-                    <Col lg={5}>
-                      <span
-                        style={{
-                          fontFamily: "'Roboto Condensed', sans-serif",
-                          fontSize: "17px",
-                          letterSpacing: "0.15em",
-                        }}
-                      >
-                        PRODUCTS
-                      </span>
-                    </Col>
-                    <Col lg={2}>
-                      {" "}
-                      <span
-                        style={{
-                          fontFamily: "'Roboto Condensed', sans-serif",
-                          fontSize: "17px",
-                          letterSpacing: "0.15em",
-                        }}
-                      >
-                        PRICE
-                      </span>
-                    </Col>
-                    <Col lg={2}>
-                      <span
-                        style={{
-                          fontFamily: "'Roboto Condensed', sans-serif",
-                          fontSize: "17px",
-                          letterSpacing: "0.15em",
-                        }}
-                      >
-                        QUANTITY
-                      </span>
-                    </Col>
-                    <Col lg={2}>
-                      <span
-                        style={{
-                          fontFamily: "'Roboto Condensed', sans-serif",
-                          fontSize: "17px",
-                          letterSpacing: "0.15em",
-                        }}
-                      >
-                        TOTAL
-                      </span>
-                    </Col>
-                    <Col lg={1}></Col>
-                  </Row>
-                  <hr />
-
-                  {cartItems.map((item) => (
-                    <div
-                      className="mb-3 d-lex align-items-center"
-                      style={{ borderBottom: "1px solid gray" }}
+              <div className="mt-5">
+                <Row>
+                  <Col lg={5}>
+                    <span
+                      style={{
+                        fontFamily: "'Roboto Condensed', sans-serif",
+                        fontSize: "17px",
+                        letterSpacing: "0.15em",
+                      }}
                     >
-                      <Row>
-                        <Col lg={5}>
-                          <Row>
-                        
-                            <div className="ml-4">
-                              <h6>
-                                
-                                  {item.name}
-                               
-                              </h6>
-                              <p
-                                style={{
-                                  fontFamily: "'Montserrat', sans-serif",
-                                }}
-                              >
-                                {item.size ? <p>size: {item.size}</p> : null}
-                              </p>
-                            </div>
-                          </Row>
-                        </Col>
-                        <Col xl={2}>
-                          {item.size === "medium" ? (
-                            <div>
-                              {new Intl.NumberFormat().format(
-                                item.price + 5000
-                              )}{" "}
-                             
-                            </div>
-                          ) : item.size === "large" ? (
-                            <div>
-                              {new Intl.NumberFormat().format(
-                                item.price + 10000
-                              )}{" "}
-                              
-                            </div>
-                          ) : (
-                            <div>
-                              {new Intl.NumberFormat().format(item.price)} 
-                            </div>
-                          )}
-                        </Col>
-                        <Col xl={2}>
-                          <div className="staff-add-quantity-box">
-                            <button onClick={() => handleSubQuantity(item.id)}>
-                              -
-                            </button>
-                            <input name="quantity" value={item.quantity} />
-                            <button onClick={() => handleAddQuantity(item.id)}>
-                              +
-                            </button>
+                      PRODUCTS
+                    </span>
+                  </Col>
+                  <Col lg={2}>
+                    {" "}
+                    <span
+                      style={{
+                        fontFamily: "'Roboto Condensed', sans-serif",
+                        fontSize: "17px",
+                        letterSpacing: "0.15em",
+                      }}
+                    >
+                      PRICE
+                    </span>
+                  </Col>
+                  <Col lg={2}>
+                    <span
+                      style={{
+                        fontFamily: "'Roboto Condensed', sans-serif",
+                        fontSize: "17px",
+                        letterSpacing: "0.15em",
+                      }}
+                    >
+                      QUANTITY
+                    </span>
+                  </Col>
+                  <Col lg={2}>
+                    <span
+                      style={{
+                        fontFamily: "'Roboto Condensed', sans-serif",
+                        fontSize: "17px",
+                        letterSpacing: "0.15em",
+                      }}
+                    >
+                      TOTAL
+                    </span>
+                  </Col>
+                  <Col lg={1}></Col>
+                </Row>
+                <hr />
+
+                {cartItems.map((item) => (
+                  <div
+                    className="mb-3 d-lex align-items-center"
+                    style={{ borderBottom: "1px solid gray" }}
+                  >
+                    <Row>
+                      <Col lg={5}>
+                        <Row>
+                          <div className="ml-4">
+                            <h6>{item.name}</h6>
+                            <p
+                              style={{
+                                fontFamily: "'Montserrat', sans-serif",
+                              }}
+                            >
+                              {item.size ? <p>size: {item.size}</p> : null}
+                            </p>
                           </div>
-                        </Col>
-                        <Col xl={2}>
-                          {item.size === "medium" ? (
-                            <div>
-                              {new Intl.NumberFormat().format(
-                                item.quantity * (item.price + 5000)
-                              )}{" "}
-                              
-                            </div>
-                          ) : item.size === "large" ? (
-                            <div>
-                              {new Intl.NumberFormat().format(
-                                item.quantity * (item.price + 10000)
-                              )}{" "}
-                              
-                            </div>
-                          ) : (
-                            <div>
-                              {new Intl.NumberFormat().format(
-                                item.quantity * item.price
-                              )}{" "}
-                             
-                            </div>
-                          )}
-                        </Col>
-                        <Col>
-                          <FontAwesomeIcon
-                            onClick={() => removeFromCartHandler(item.id)}
-                            icon={faTimes}
-                            size="lg"
-                            color="black"
-                          />{" "}
-                        </Col>
-                      </Row>
+                        </Row>
+                      </Col>
+                      <Col xl={2}>
+                        {item.size === "medium" ? (
+                          <div>
+                            {new Intl.NumberFormat().format(item.price + 5000)}{" "}
+                          </div>
+                        ) : item.size === "large" ? (
+                          <div>
+                            {new Intl.NumberFormat().format(item.price + 10000)}{" "}
+                          </div>
+                        ) : (
+                          <div>
+                            {new Intl.NumberFormat().format(item.price)}
+                          </div>
+                        )}
+                      </Col>
+                      <Col xl={2}>
+                        <div className="staff-add-quantity-box">
+                          <button onClick={() => handleSubQuantity(item.id)}>
+                            -
+                          </button>
+                          <input name="quantity" value={item.quantity} />
+                          <button onClick={() => handleAddQuantity(item.id)}>
+                            +
+                          </button>
+                        </div>
+                      </Col>
+                      <Col xl={2}>
+                        {item.size === "medium" ? (
+                          <div>
+                            {new Intl.NumberFormat().format(
+                              item.quantity * (item.price + 5000)
+                            )}{" "}
+                          </div>
+                        ) : item.size === "large" ? (
+                          <div>
+                            {new Intl.NumberFormat().format(
+                              item.quantity * (item.price + 10000)
+                            )}{" "}
+                          </div>
+                        ) : (
+                          <div>
+                            {new Intl.NumberFormat().format(
+                              item.quantity * item.price
+                            )}{" "}
+                          </div>
+                        )}
+                      </Col>
+                      <Col>
+                        <FontAwesomeIcon
+                          onClick={() => removeFromCartHandler(item.id)}
+                          icon={faTimes}
+                          size="lg"
+                          color="black"
+                        />{" "}
+                      </Col>
+                    </Row>
+                  </div>
+                ))}
+                <Row>
+                  <Col>
+                    <div className="text-right">
+                      <h4
+                        style={{
+                          fontFamily: "'Roboto Condensed', sans-serif",
+                          fontSize: "25px",
+                          letterSpacing: "0.15em",
+                        }}
+                      >
+                        SUBTOTAL
+                      </h4>
+                      <h4
+                        style={{
+                          fontFamily: "'Roboto Condensed', sans-serif",
+                          fontSize: "23px",
+                        }}
+                      >
+                        {new Intl.NumberFormat().format(
+                          subtotal
+                        )}{" "}
+                        VND
+                      </h4>
                     </div>
-                  ))}
-                  <Row>
-                    <Col>
-                      <div className="text-right">
-                        <h4
-                          style={{
-                            fontFamily: "'Roboto Condensed', sans-serif",
-                            fontSize: "25px",
-                            letterSpacing: "0.15em",
-                          }}
+                  </Col>
+                </Row>
+                <Row>
+                  <div className="text-right w-100 mr-4 mt-4 mb-4">
+                    <form onSubmit={handleSubmitPayment}>
+                      <label >
+                        PAY BY:
+                        <select
+                        className="ml-3"
+                        style={{width:"70px",height:"30px"}}
+                          value={payment}
+                          onChange={(e) => setPayment(e.target.value)}
                         >
-                          SUBTOTAL
-                        </h4>
-                        <h4
-                          style={{
-                            fontFamily: "'Roboto Condensed', sans-serif",
-                            fontSize: "23px",
-                          }}
-                        >
-                          {new Intl.NumberFormat().format(
-                            cartItems.reduce((acc, item) => {
-                              return item.size === "medium"
-                                ? acc + item.quantity * (item.price + 5000)
-                                : item.size === "large"
-                                ? acc + item.quantity * (item.price + 10000)
-                                : acc + item.quantity * item.price;
-                            }, 0)
-                          )}{" "}
-                          VND
-                        </h4>
-                        
-                      </div>
-                    </Col>
-                  </Row>
-                  <Row>
-                  <form onSubmit={handleSubmitPayment}>
-        <label>
-          Payment:
-          <select value={payment} onChange={(e)=>setPayment(e.target.value)}>
-            <option value="cash">Cash</option>
-            <option value="momo">Momo</option>
-            <option value="visa">Visa</option>
-          </select>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <div className="text-right">
-                        <Button
-                          className="checkout-btn"
-                        >
-                          {" "}
-                          CHECK OUT
-                        </Button>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-            
+                          <option value="cash">Cash</option>
+                          <option value="momo">Momo</option>
+                          <option value="visa">Visa</option>
+                        </select>
+                      </label>
+                      <input className="ml-3" type="submit" value="Choose" />
+                    </form>
+                  </div>
+                </Row>
+                <Row>
+                  <Col>
+                    <div className="text-right">
+                      <Button onClick={handlePlaceOrder} className="checkout-btn"> PLACE ORDER</Button>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
             </Container>
           </Col>
         </Row>

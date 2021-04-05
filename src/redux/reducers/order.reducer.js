@@ -14,8 +14,15 @@ const orderReducer = (state = initialState, action) => {
     case types.GET_ORDERS_REQUEST:
       return { ...state, loading: true };
     case types.GET_ORDERS_SUCCESS:
-      return { ...state, orders: payload.orders, loading: false };
+      return { ...state, orders: payload.orders,totalPages:payload.totalPages, loading: false };
     case types.GET_ORDERS_FAILURE:
+      return { ...state, loading: false };
+    // GET ALL ONLINE ORDERS
+    case types.GET_ONLINE_ORDERS_REQUEST:
+      return { ...state, loading: true };
+    case types.GET_ONLINE_ORDERS_SUCCESS:
+      return { ...state, orders: payload.orders,totalPages:payload.totalPages, loading: false };
+    case types.GET_ONLINE_ORDERS_FAILURE:
       return { ...state, loading: false };
     //CREATE ORDER
     case types.CREATE_ORDER_REQUEST:
@@ -28,7 +35,7 @@ const orderReducer = (state = initialState, action) => {
     case types.GET_MY_ORDERS_REQUEST:
       return { ...state, loading: true };
     case types.GET_MY_ORDERS_SUCCESS:
-      return { ...state, loading: false, orders: payload };
+      return { ...state, loading: false, orders: payload.orders, totalPages: payload.totalPages};
     case types.GET_MY_ORDERS_FAILURE:
       return { ...state, loading: false };
     //GET SINGLE ORDER

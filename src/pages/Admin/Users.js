@@ -24,19 +24,19 @@ const Users = () => {
   
 
   useEffect(() => {
-    dispatch(userActions.getAllUsers());
-  }, []);
+    dispatch(userActions.getAllUsers(pageNum,limit));
+  }, [dispatch,pageNum,limit]);
 
   
   return (
-    <>
-      <Container
-        fluid
-        className="d-flex align-items-center justify-content-center admin-user-header"
-      >
-        <span className="header-title">USERS</span>
-      </Container>
-      <Container fluid className="py-5" style={{ width: "70%" }}>
+    <div className="mt-5 text-center w-75">
+      {loading ? (
+        <div style={{padding:"40px"}} className="d-flex justify-content-center align-items-center">
+          <img style={{width:"60px"}} loading={true} className="loaderImage" src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"/>
+        </div>
+      ) : (
+      <>
+      <Container  >
         <Table bordered hover className="order-table">
           <thead>
             <tr
@@ -87,8 +87,8 @@ const Users = () => {
         </Table>
       </Container>
       <PaginationBar pageNum={pageNum} setPageNum={setPageNum} totalPages={totalPages}/>
-
-    </>
+      </>)}
+    </div>
   );
 };
 

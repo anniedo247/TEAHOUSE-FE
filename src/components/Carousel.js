@@ -14,7 +14,7 @@ const Carousel = () => {
     },
     {
       image:
-        "https://res.cloudinary.com/dbxawxez9/image/upload/v1617121600/teaHouse/sixteen-miles-out-IGI9o4B739U-unsplash_zu7cbp.png",
+        "https://res.cloudinary.com/dbxawxez9/image/upload/v1617639547/teaHouse/photo-1528696892704-5e1122852276_b1oyjn.jpg",
       title: "HAPPINESS IN A CUP",
       description:
         "A cup of tea a day keeps worries away. Find your favorite flavors and start a healthy morning routine with the best selection of tea plants from East Asia.",

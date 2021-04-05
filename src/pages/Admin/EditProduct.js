@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 
 import productActions from "../../redux/actions/product.actions";
 
-const EditProduct = () => {
+const EditProduct = ({history}) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.product.loading);
   const selectedProduct = useSelector((state) => state.product.selectedProduct);
@@ -41,26 +41,7 @@ const EditProduct = () => {
               categories: selectedProduct.categories,
             }))};
   },[selectedProduct])
-  // useEffect(() => {
-  //   console.log("bbbb", productId);
-  //   if (productId) {
-  //     // if (!selectedProduct) {
-  //       dispatch(productActions.getSingleProduct(productId));
-  //     // }
-  //     console.log("aaa", selectedProduct);
-  //     if (selectedProduct) {
-  //       setNewProduct((newProduct) => ({
-  //         ...newProduct,
-  //         name: selectedProduct.name,
-  //         description: selectedProduct.description,
-  //         ingredients: selectedProduct.ingredients,
-  //         price: selectedProduct.price,
-  //         images: selectedProduct.images,
-  //         categories: selectedProduct.categories,
-  //       }));
-  //     }
-  //   }
-  // }, [dispatch, productId]);
+  
 
   const onChange = (e) => {
     setNewProduct({ ...newProduct, [e.target.id]: e.target.value });
@@ -88,6 +69,8 @@ const EditProduct = () => {
       })
     );
     setEditable(false);
+    history.push('/admin/products')
+
   };
   const handleCancel = () => {
     setEditable(false);
@@ -120,12 +103,8 @@ const EditProduct = () => {
         </div>
       ) : ( */}
         <>
-          <Container
-            fluid
-            className="d-flex align-items-center justify-content-center create-product-header"
-          >
-            <span className="header-title">EDIT PRODUCT</span>
-          </Container>
+          
+          <Container>
           <div style={{ textAlign: "end" }}>
             {" "}
             <Button
@@ -326,6 +305,8 @@ const EditProduct = () => {
               
             </Form>
           </div>
+          </Container>
+          
         </>
       {/* )} */}
     </>

@@ -23,9 +23,6 @@ const OrderDetails = () => {
   const loading = useSelector((state) => state.order.loading);
   const { orderId } = useParams();
 
-  const handleGoBack = () => {
-    history.push("/admin/orders");
-  };
 
   useEffect(() => {
     dispatch(orderActions.getSingleOrder(orderId));
@@ -36,18 +33,13 @@ const OrderDetails = () => {
     dispatch(orderActions.updateOrderStatus(orderId))
   }
   return (
-    <div className="mt-5 mb-5 w-100">
-      {/* {loading ? (
-        <div className="d-flex justify-content-center align-items-center">
-          <ClipLoader color="#f86c6b" size={150} loading={true} />
+    <div className="mt-5 mb-5 w-75">
+      {loading ? (
+        <div style={{padding:"40px"}} className="d-flex justify-content-center align-items-center">
+          <img style={{width:"60px"}} loading={true} className="loaderImage" src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"/>
         </div>
-      ) : ( */}
-      <Container
-        fluid
-        className="d-flex align-items-center justify-content-center admin-order-header mb-5"
-      >
-        <span className="header-title">ORDER DETAILS</span>
-      </Container>
+      ) : (
+      <>
       <Container style={{ width: "100%" }}>
         <Row>
           <div>
@@ -367,9 +359,7 @@ const OrderDetails = () => {
                             MARK AS DELIVERED
                           </Button>
                         ):null}
-                      <Button onClick={handleGoBack} className="checkout-btn">
-                        GO BACK
-                      </Button>
+                      
                     </ButtonGroup>
                   </Col>
                 </Row>
@@ -378,7 +368,8 @@ const OrderDetails = () => {
           </Col>
         </Row>
       </Container>
-      {/* )} */}
+      </>
+     )} 
     </div>
   );
 };

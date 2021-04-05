@@ -8,7 +8,7 @@ import { faTrashAlt, faEye } from "@fortawesome/free-solid-svg-icons";
 import orderActions from "../../redux/actions/order.actions";
 import PaginationBar from "../../components/PaginationBar";
 
-const Orders = ({ history }) => {
+const OnlineOrders = ({ history }) => {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.order.orders);
   const totalPages = useSelector((state) => state.order.totalPages);
@@ -17,7 +17,7 @@ const Orders = ({ history }) => {
   const limit = 10;
 
   useEffect(() => {
-    dispatch(orderActions.getAllOrders(pageNum, limit));
+    dispatch(orderActions.getAllOnlineOrders({pageNum, limit}));
   }, [dispatch, pageNum, limit]);
 
   const handleClickOrder = (id) => {
@@ -25,14 +25,13 @@ const Orders = ({ history }) => {
   };
 
   return (
-    <>
-      <Container
-        fluid
-        className="d-flex align-items-center justify-content-center admin-order-header"
-      >
-        <span className="header-title">ORDERS</span>
-      </Container>
-      <Container fluid className="py-5" style={{ width: "70%" }}>
+    <div className="mt-5 text-center w-75">
+      {loading ? (
+        <div style={{padding:"40px"}} className="d-flex justify-content-center align-items-center">
+          <img style={{width:"60px"}} loading={true} className="loaderImage" src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"/>
+        </div>
+      ) : (
+      <Container>
         <Table bordered hover className="order-table">
           <thead>
             <tr
@@ -47,7 +46,7 @@ const Orders = ({ history }) => {
               <th>DATE</th>
               <th>PAID</th>
               <th></th>
-              <th></th>
+              
             </tr>
           </thead>
           {orders.map((order) => (
@@ -84,26 +83,20 @@ const Orders = ({ history }) => {
                     size="md"
                   />{" "}
                 </td>
-                <td>
-                  <FontAwesomeIcon
-                    style={{ marginLeft: "35%" }}
-                    icon={faTrashAlt}
-                    color="red"
-                    size="md"
-                  />
-                </td>
+                
               </tr>
             </tbody>
           ))}
         </Table>
-      </Container>
-      <PaginationBar
+        <PaginationBar
         pageNum={pageNum}
         setPageNum={setPageNum}
         totalPages={totalPages}
       />
-    </>
+      </Container>
+      )}
+    </div>
   );
 };
 
-export default Orders;
+export default OnlineOrders;

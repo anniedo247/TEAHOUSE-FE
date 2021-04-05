@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Tabs, Tab, Card, Button ,CardGroup,CardDeck} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useHistory ,Link} from "react-router-dom";
 import StarRatings from "react-star-ratings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -32,6 +32,10 @@ const ProductDetails = () => {
   let productCategory = product?.categories.map((c)=>c.name).toString();
   console.log("productCa", productCategory);
   let [category, setCategory] = useState("");
+
+  const handleClickProduct = (id) => {
+    history.push(`/products/${id}`)
+  }
   
   useEffect(()=> {
     if(productCategory) {
@@ -94,7 +98,7 @@ const ProductDetails = () => {
   }, [dispatch, category]);
   return (
     <div>
-      <Container>
+      <Container style={{minHeight:"80vh"}}>
         <Row>
           <Col xl={6}>
             {product && (
@@ -210,7 +214,7 @@ const ProductDetails = () => {
                   size="lg"
                   color="black"
                 />
-                <span className="ml-3">Add to wishlist</span>
+                <span className="ml-3">Add to favorite</span>
               </div>
             </Row>
             <Row>
@@ -331,7 +335,7 @@ const ProductDetails = () => {
         {products.map((p) => (
           <div className=" mb-5 product-card">
           <div className="product-card--wrapper">
-            <img src={p.images[0]} />
+          <img onClick={() => handleClickProduct(p._id)}src={p.images[0]} />
           </div>
           <h5
             //onClick={() => handleClickProduct(product._id)}

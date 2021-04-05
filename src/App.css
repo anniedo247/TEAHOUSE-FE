@@ -135,7 +135,7 @@ body {
   color: black;
 }
 .create-product-header {
-  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616868243/teaHouse/photo-1522160196-1a0efa63778d_fukgus.jpg");
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1616986344/teaHouse/photo-1437315306147-0923bdb3fc12_hqkqbb.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position: bottom;
@@ -383,6 +383,8 @@ body {
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
+  
 }
 
 input[type="radio"] {
@@ -680,7 +682,7 @@ figure.snip1256 {
   overflow: hidden;
   margin: 10px;
   /* min-width: 220px; */
-  max-width: 460px;
+  max-width: 450px;
   max-height: 350px;
   width: 100%;
   color: #ffffff;
@@ -911,4 +913,19 @@ figure.snip1256.hover figcaption {
 .snip1273:hover figcaption:after,
 .snip1273.hover figcaption:after {
   opacity: 0.1;
+}
+
+.markAsPaid-btn {
+  background-color: transparent;
+  border : none;
+  cursor: pointer;
+}
+.markAsPaid-btn:hover {
+ color: white;
+}
+.MuiPaginationItem-page.Mui-selected {
+background-color:#98a86d !important;
+}
+a {
+  color: black !important;
 }

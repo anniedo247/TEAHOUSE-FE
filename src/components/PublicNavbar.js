@@ -46,16 +46,19 @@ const PublicNavbar = () => {
         zIndex: 10,
       }}
     >
-      <FontAwesomeIcon icon={faUser} size="lg" color="black" />
+      <FontAwesomeIcon className="mr-3" icon={faUser} size="lg" color="black" />
 
-      <div class="dropdown">
-        <button class="dropbtn">{user?.name}</button>
-        <div class="dropdown-content">
-          <Link to="/admin/products">Products</Link>
-          <Link to="/admin/orders">Orders</Link>
-          <Link to="/admin/users">Users</Link>
-        </div>
-      </div>
+      <Link
+        className="mr-4"
+        style={{
+          fontFamily: "'Libre Baskerville', serif",
+          fontSize: "17px",
+          color: "black !important",
+        }}
+        to="/admin/products"
+      >
+        Dashboard
+      </Link>
       <FontAwesomeIcon
         onClick={handleLogout}
         icon={faSignOutAlt}
@@ -78,9 +81,10 @@ const PublicNavbar = () => {
         <FontAwesomeIcon icon={faUser} size="lg" color="black" />
       </Link>
       <span>{user?.name}</span>
-      {/* <Link className="nav-icon" to="/users/favorite">
+      <Link className="ml-2">
         <FontAwesomeIcon icon={faHeart} size="lg" color="black" />
-      </Link> */}
+      </Link>
+       <span className="mr-1">({!loading && user && user.favorite && user.favorite.length})</span>
       <Link className="nav-icon" to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} size="lg" color="black" />
       </Link>
@@ -104,7 +108,17 @@ const PublicNavbar = () => {
         transform: "translateY(-50%)",
       }}
     >
-      <Link className="mr-4" style={{fontFamily:"'Libre Baskerville', serif",fontSize:"17px", color:"black !important"}} to="/staff/createorder">Dashboard</Link>
+      <Link
+        className="mr-4"
+        style={{
+          fontFamily: "'Libre Baskerville', serif",
+          fontSize: "17px",
+          color: "black !important",
+        }}
+        to="/staff/createorder"
+      >
+        Dashboard
+      </Link>
       <FontAwesomeIcon
         onClick={handleLogout}
         icon={faSignOutAlt}
@@ -113,8 +127,6 @@ const PublicNavbar = () => {
       />
     </div>
   );
-
-  
 
   const publicBar = (
     <div

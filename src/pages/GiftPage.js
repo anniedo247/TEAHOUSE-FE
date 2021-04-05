@@ -52,7 +52,7 @@ const GiftPage = () => {
           <Container fluid className="text-center gift-header">
             <h1 className="header-title">GIFT SETS</h1>
           </Container>
-          <Container className="py-5 d-flex justify-content-center">
+          <Container style={{minHeight:"80vh"}} className="py-5 d-flex justify-content-center">
             <Row>
               {products.map((p) => (
                 <ProductCard

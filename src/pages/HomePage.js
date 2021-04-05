@@ -26,7 +26,7 @@ const HomePage = () => {
   return (
     <div>
       <Carousel />
-      <Container fluid className="mt-5">
+      <Container style={{minHeight:"80vh"}} fluid className="mt-5">
         <Row className="d-flex justify-content-center">
           <figure class="snip1256">
             <img

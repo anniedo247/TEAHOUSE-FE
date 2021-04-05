@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHistory,Link } from "react-router-dom";
 import ClipLoader from "react-spinners";
+import Moment from "react-moment";
 
 import orderActions from "../../redux/actions/order.actions";
 
-const UserOrdersDetail = () => {
+const OutletOrdersDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const order = useSelector((state) => state.order.selectedOrder);
@@ -15,7 +16,7 @@ const UserOrdersDetail = () => {
   const { orderId } = useParams();
 
   const handleGoBack = () => {
-    history.push("/users/me/orders");
+    history.push("/staff/orders");
   };
 
   useEffect(() => {
@@ -24,12 +25,12 @@ const UserOrdersDetail = () => {
   console.log("order", order);
   return (
     <div className="mt-5 mb-5 w-75">
-      {loading ? (
-        <div style={{padding:"40px"}} className="d-flex justify-content-center align-items-center">
-          <img style={{width:"60px"}} loading={true} className="loaderImage" src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"/>
+      {/* {loading ? (
+        <div className="d-flex justify-content-center align-items-center">
+          <ClipLoader color="#f86c6b" size={150} loading={true} />
         </div>
-      ) : (
-        <Container style={{ width: "100%" ,minHeight:"80vh"}}>
+      ) : ( */}
+        <Container style={{ width: "100%" }}>
           <Row>
             <div>
               <h3
@@ -47,14 +48,14 @@ const UserOrdersDetail = () => {
           <Row>
             <Col>
               <ListGroup variant="flush">
-                <ListGroup.Item>
+              <ListGroup.Item>
                   <h3
                     style={{
                       fontFamily: "'Roboto Condensed', sans-serif",
                       letterSpacing: "0.15em",
                     }}
                   >
-                    SHIPPING
+                    DATE
                   </h3>
                   <p
                     style={{
@@ -63,11 +64,8 @@ const UserOrdersDetail = () => {
                       fontWeight: "400",
                     }}
                   >
-                    <strong>Address: </strong>
-                    {order?.shippingAddress.address},{" "}
-                    {order?.shippingAddress.ward}{" "}
-                    {order?.shippingAddress.district},{" "}
-                    {order?.shippingAddress.city}
+                 <Moment format="YYYY-MM-DD">{order.createdAt}</Moment>
+
                   </p>
                 </ListGroup.Item>
                 <ListGroup.Item>
@@ -97,7 +95,7 @@ const UserOrdersDetail = () => {
                       letterSpacing: "0.15em",
                     }}
                   >
-                    DELIVERY STATUS
+                    PAYMENT STATUS
                   </h3>
                   <p
                     style={{
@@ -106,10 +104,10 @@ const UserOrdersDetail = () => {
                       fontWeight: "400",
                     }}
                   >
-                    {order?.isDelivered ? (
-                      <span>Delivered</span>
+                    {order?.isPaid ? (
+                      <span>Paid</span>
                     ) : (
-                      <span>Shipping</span>
+                      <span>Pending</span>
                     )}
                   </p>
                 </ListGroup.Item>
@@ -249,31 +247,7 @@ const UserOrdersDetail = () => {
                   </ListGroup>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Row >
-                    <Col
-                      lg={9}
-                      style={{
-                        fontFamily: "'Montserrat', sans-serif",
-                        fontSize: "17px",
-                        fontWeight: "600",
-                      }}
-                      className="text-right"
-                    >
-                      {" "}
-                      DELIVERY CHARGE :{" "}
-                    </Col>
-                    <Col
-                      style={{
-                        fontFamily: "'Montserrat', sans-serif",
-                        fontSize: "17px",
-                        fontWeight: "600",
-                      }}
-                      className="text-right"
-                    >
-                      {new Intl.NumberFormat().format(order?.deliveryCharge)}{" "}
-                      VND
-                    </Col>
-                  </Row>
+                  
                   <Row className="mt-3">
                     <Col
                       lg={9}
@@ -311,9 +285,9 @@ const UserOrdersDetail = () => {
             </Col>
           </Row>
         </Container>
-       )} 
+      {/* )} */}
     </div>
   );
 };
 
-export default UserOrdersDetail;
+export default OutletOrdersDetails;
