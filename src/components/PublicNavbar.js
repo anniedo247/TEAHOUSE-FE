@@ -95,6 +95,26 @@ const PublicNavbar = () => {
       />
     </div>
   );
+  const staffBar = (
+    <div
+      style={{
+        position: "absolute",
+        right: "10%",
+        top: "50%",
+        transform: "translateY(-50%)",
+      }}
+    >
+      <Link className="mr-4" style={{fontFamily:"'Libre Baskerville', serif",fontSize:"17px", color:"black !important"}} to="/staff/createorder">Dashboard</Link>
+      <FontAwesomeIcon
+        onClick={handleLogout}
+        icon={faSignOutAlt}
+        size="lg"
+        color="black"
+      />
+    </div>
+  );
+
+  
 
   const publicBar = (
     <div
@@ -163,6 +183,8 @@ const PublicNavbar = () => {
           ? userBar
           : isAuthenticated && user.role === "admin"
           ? adminBar
+          : isAuthenticated && user.role === "staff"
+          ? staffBar
           : publicBar}
       </div>
       <div className="d-lg-block d-none ">

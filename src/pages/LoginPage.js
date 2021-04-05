@@ -38,13 +38,17 @@ const LoginPage = ({ location, history }) => {
             className="loaderImage"
             src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"
           />
-          {/* <ClipLoader color="#f86c6b" size={150} loading={true} /> */}
         </div>
       ) : (
         <div>
           <Container
             fluid
-            style={{ width: "50%", marginTop: "30px", marginBottom: "50px" }}
+            style={{
+              width: "50%",
+              marginTop: "30px",
+              marginBottom: "50px",
+              minHeight: "80vh",
+            }}
           >
             <div className="text-center p-terms">
               <h2

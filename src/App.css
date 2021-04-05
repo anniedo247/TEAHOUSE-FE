@@ -12,6 +12,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 /*font-family: 'Montserrat', sans-serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+/*font-family: 'Libre Baskerville', serif;*/
 * {
   box-sizing: border-box;
 }
@@ -161,6 +163,14 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  height: 400px;
+  color: white;
+}
+.staff-header {
+  background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617553980/teaHouse/photo-1515094264130-1c21fc4c9dcd_vvinlk.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: bottom;
   height: 400px;
   color: white;
 }
@@ -341,6 +351,9 @@ body {
   cursor: pointer;
 }
 /*------product details ----*/
+.react-multi-carousel-item{
+  width: 300px !important;
+}
 .size-input {
   font-size: 17px;
   font-family: "Open Sans", sans-serif;
@@ -590,6 +603,22 @@ border: none;
   border: none;
   background-color: transparent;
   width: 40px;
+  text-align: center;
+}
+.staff-add-quantity-box {
+  border: 1px solid black;
+  width: fit-content;
+}
+.staff-add-quantity-box > input {
+  width: 20px;
+  height: 10px;
+  text-align: center;
+  border: none;
+}
+.staff-add-quantity-box > button {
+  border: none;
+  background-color: transparent;
+  width: 20px;
   text-align: center;
 }
 .checkout-btn {

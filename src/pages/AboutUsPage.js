@@ -3,25 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
 
 const AboutUsPage = () => {
   return (
@@ -183,32 +164,44 @@ const AboutUsPage = () => {
           }}
           showDots={false}
           sliderClass=""
-          slidesToSlide={2}
+          slidesToSlide={1}
           swipeable
         >
           <img
-            style={{ maxWidth: "450px" }}
+            style={{ maxWidth: "400px" }}
             src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617292456/teaHouse/photo-1485182708500-e8f1f318ba72_wcoavi.jpg"
           />
           <img
-            style={{ maxWidth: "450px" }}
+            style={{ maxWidth: "400px" }}
             src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617292456/teaHouse/photo-1520881363902-a0ff4e722963_wfxuyr.jpg"
           />
           <img
-            style={{ maxWidth: "450px" }}
+            style={{ maxWidth: "400px" }}
             src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617292456/teaHouse/photo-1516635707594-6949bdca3538_lonsfw.jpg"
           />
           <img
-            style={{ maxWidth: "450px" }}
+            style={{ maxWidth: "400px" }}
             src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617292455/teaHouse/photo-1543269865-0a740d43b90c_gc8vy3.jpg"
           />
           <img
-            style={{ maxWidth: "450px" }}
+            style={{ maxWidth: "400px" }}
             src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617292455/teaHouse/photo-1516007238173-044491a11604_kmlwmb.jpg"
           />
           <img
-            style={{ maxWidth: "450px" }}
+            style={{ maxWidth: "400px" }}
             src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617292455/teaHouse/photo-1522202207928-e5dcc3fd299f_reb9i3.jpg"
+          />
+          <img
+            style={{ maxWidth: "400px" }}
+            src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617553742/teaHouse/photo-1516197370049-569c4eaba1d6_kmi68a.jpg"
+          />
+          <img
+            style={{ maxWidth: "400px" }}
+            src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617553742/teaHouse/photo-1554774853-b415df9eeb92_wyekzt.jpg"
+          />
+          <img
+            style={{ maxWidth: "400px" }}
+            src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617553742/teaHouse/photo-1556740749-887f6717d7e4_ikwqew.jpg"
           />
         </Carousel>
       </Container>

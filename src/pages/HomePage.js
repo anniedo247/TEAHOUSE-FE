@@ -83,10 +83,10 @@ const HomePage = () => {
           </figure>
         </Row>
         <Row className="mt-5">
-          <Col xl={6} className="d-none d-xl-block">
+          <Col xl={6} >
             <img
-              style={{ maxWidth: "700px" }}
-              src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617176676/teaHouse/lotus_stk7le.png"
+             style={{ width: "100%" }}
+              src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617338577/teaHouse/lotus_1_d6aqx3.png"
             />
           </Col>
           <Col xl={6}>
