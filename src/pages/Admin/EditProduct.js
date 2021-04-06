@@ -96,12 +96,12 @@ const EditProduct = ({history}) => {
   };
   console.log("ccccc", newProduct);
   return (
-    <>
-      {/* {loading ? (
-        <div className="d-flex justify-content-center align-items-center">
-          <ClipLoader color="#f86c6b" size={150} loading={true} />
+    <div className="mt-5 text-center w-75">
+      {loading ? (
+        <div style={{padding:"40px"}} className="d-flex justify-content-center align-items-center">
+          <img style={{width:"60px"}} loading={true} className="loaderImage" src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"/>
         </div>
-      ) : ( */}
+      ) : (
         <>
           
           <Container>
@@ -308,8 +308,8 @@ const EditProduct = ({history}) => {
           </Container>
           
         </>
-      {/* )} */}
-    </>
+      )} 
+    </div>
   );
 };
 

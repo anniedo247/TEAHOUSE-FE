@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Form, Button, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import productActions from "../../redux/actions/product.actions";
-const AddProduct = () => {
+const AddProduct = ({history}) => {
   const dispatch = useDispatch();
   const [newProduct, setNewProduct] = useState({
     name: "",
@@ -23,6 +23,7 @@ const AddProduct = () => {
       return item.trim();
     });
     dispatch(productActions.addProduct(newProduct));
+    history.push("/admin/products")
   };
 
   const uploadWidget = () => {
@@ -47,14 +48,9 @@ const AddProduct = () => {
 
   return (
     <>
-      <Container
-        fluid
-        className="d-flex align-items-center justify-content-center create-product-header"
-      >
-        <span className="header-title">CREATE NEW PRODUCT</span>
-      </Container>
+      
       <div
-        className="d-flex justify-content-center"
+        className="d-flex justify-content-center w-75"
         style={{ marginTop: "30px",marginBottom:"40px" }}
       >
         <Form

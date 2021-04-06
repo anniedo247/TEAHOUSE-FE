@@ -47,6 +47,7 @@ const UserFavorite = () => {
           </div>
         </Row>
         <Row className="mt-5">
+          <Container className="w-75">
           {!loading && currentUser &&
             currentUser.favorite && currentUser.favorite.length !== 0 &&
             currentUser.favorite.map((f) => (
@@ -84,6 +85,8 @@ const UserFavorite = () => {
                 </p>
               </div>
             ))}
+          </Container>
+         
         </Row>
       </Container>
       </>)}
