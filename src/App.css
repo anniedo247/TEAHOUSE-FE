@@ -9,10 +9,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 /*font-family: 'Open Sans', sans-serif;*/
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
 /*font-family: 'Montserrat', sans-serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap");
 /*font-family: 'Libre Baskerville', serif;*/
 * {
   box-sizing: border-box;
@@ -20,11 +20,12 @@
 
 body {
   min-height: 100vh;
+  
 }
 
 .custom-modal {
-  height: 100vh!important;
-  width: 100vh!important;
+  height: 100vh !important;
+  width: 100vh !important;
 }
 
 /*-------searchBar--------*/
@@ -67,19 +68,18 @@ body {
   color: #98a86d !important;
 }
 .nav-icon {
-  margin-right:0px;
+  margin-right: 0px;
   margin-left: 10px;
 }
 .cartIcon {
-  position: relative
+  position: relative;
 }
 .cartLength {
-  background-color:#98a86d ;
-  color:white;
-  padding:0 5px;
+  background-color: #98a86d;
+  color: white;
+  padding: 0 5px;
   border-radius: 50%;
   position: absolute;
-  
 }
 /*-----register-----*/
 .error-msg {
@@ -118,7 +118,7 @@ body {
   height: 400px;
   color: white;
 }
-.gift-header{
+.gift-header {
   background-image: url("https://res.cloudinary.com/dbxawxez9/image/upload/v1617213356/teaHouse/154876745_1162090914255957_3009234667051155295_n_gamqq5.png");
   background-attachment: fixed;
   background-size: cover;
@@ -278,7 +278,11 @@ body {
 }
 .product-card:hover .product-card--image-top {
   opacity: 1;
-  background: linear-gradient(180deg, rgba(189, 230, 132, 0.6) 0%, rgba(255,255,255,0) 20%);
+  background: linear-gradient(
+    180deg,
+    rgba(189, 230, 132, 0.6) 0%,
+    rgba(255, 255, 255, 0) 20%
+  );
   transition-duration: 0.5s;
 }
 .heart-icon {
@@ -351,7 +355,7 @@ body {
   cursor: pointer;
 }
 /*------product details ----*/
-.react-multi-carousel-item{
+.react-multi-carousel-item {
   width: 300px !important;
 }
 .size-input {
@@ -384,7 +388,6 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
   cursor: pointer;
-  
 }
 
 input[type="radio"] {
@@ -656,16 +659,16 @@ border: none;
   color: white;
 }
 /*----homepage  ---*/
-.homepage-btn{
-  background-color: white ;
+.homepage-btn {
+  background-color: white;
   color: black;
-  border: 1px solid  #98a86d;
-  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #98a86d;
+  font-family: "Montserrat", sans-serif;
 }
 .homepage-btn:hover {
-  background-color:  #98a86d ;
+  background-color: #98a86d;
   color: white;
-  border: 1px solid  #98a86d;
+  border: 1px solid #98a86d;
 }
 .header-img {
   max-width: 450px;
@@ -687,7 +690,7 @@ figure.snip1256 {
   width: 100%;
   color: #ffffff;
   text-align: left;
-  background-color:  #98a86d;
+  background-color: #98a86d;
   font-size: 16px;
   -webkit-perspective: 50em;
   perspective: 50em;
@@ -718,7 +721,6 @@ figure.snip1256 figcaption {
   z-index: 1;
   opacity: 0;
   padding: 20px 30px;
-
 }
 figure.snip1256 h3,
 figure.snip1256 p {
@@ -769,6 +771,8 @@ figure.snip1256.hover figcaption {
   background-image: url("https://verdure.qodeinteractive.com/wp-content/uploads/2018/03/footer-background-img-1.jpg");
   padding-top: 50px;
   padding-bottom: 50px;
+ 
+
 }
 .social {
   margin-left: 150px;
@@ -781,21 +785,29 @@ figure.snip1256.hover figcaption {
 }
 
 @-webkit-keyframes anim {
-  from {-webkit-transform: rotateY(0deg);}
-  to {-webkit-transform: rotateY(360deg);}
+  from {
+    -webkit-transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(360deg);
+  }
 }
 
 @keyframes anim {
-  from {transform: rotateY(0deg);}
-  to {transform: rotateY(360deg);}
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
 .snip1273 {
-  font-family: 'Raleway', Arial, sans-serif;
+  font-family: "Raleway", Arial, sans-serif;
   position: relative;
   margin: 10px;
-  min-width:420px -60px;
+  min-width: 420px -60px;
   max-width: 420px;
   width: 100%;
   color: #ffffff;
@@ -864,7 +876,7 @@ figure.snip1256.hover figcaption {
 .snip1273 figcaption:before,
 .snip1273 figcaption:after {
   position: absolute;
-  content: '';
+  content: "";
   background-color: #ffffff;
   z-index: 1;
   -webkit-transition: all 0.4s ease-in;
@@ -917,14 +929,14 @@ figure.snip1256.hover figcaption {
 
 .markAsPaid-btn {
   background-color: transparent;
-  border : none;
+  border: none;
   cursor: pointer;
 }
 .markAsPaid-btn:hover {
- color: white;
+  color: white;
 }
 .MuiPaginationItem-page.Mui-selected {
-background-color:#98a86d !important;
+  background-color: #98a86d !important;
 }
 a {
   color: black !important;

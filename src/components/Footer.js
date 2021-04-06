@@ -16,7 +16,7 @@ import {
 const Footer = () => {
   return (
     <div class="container-fluid pb-0 mb-0 justify-content-center footer">
-      <footer>
+      <footer >
         <div class="row justify-content-center py-5">
           <div class="col-11">
             <div class="row ">

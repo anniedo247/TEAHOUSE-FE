@@ -98,7 +98,7 @@ const ProductDetails = () => {
   }, [dispatch, category]);
   return (
     <div>
-      <Container style={{minHeight:"80vh"}}>
+      <Container style={{minHeight:"80vh",}}>
         <Row>
           <Col xl={6}>
             {product && (
@@ -335,10 +335,10 @@ const ProductDetails = () => {
         {products.map((p) => (
           <div className=" mb-5 product-card">
           <div className="product-card--wrapper">
-          <img onClick={() => handleClickProduct(p._id)}src={p.images[0]} />
+          <img style={{cursor:"pointer"}} onClick={() => handleClickProduct(p._id)}src={p.images[0]} />
           </div>
           <h5
-            //onClick={() => handleClickProduct(product._id)}
+            
             style={{
               fontFamily: "Josefin Sans', sans-serif",
               letterSpacing: "0.1em",

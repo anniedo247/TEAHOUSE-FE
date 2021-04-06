@@ -48,7 +48,7 @@ const UserFavorite = () => {
         </Row>
         <Row className="mt-5">
           {!loading && currentUser &&
-            currentUser?.favorite && currentUser?.favorite.length !== 0 &&
+            currentUser.favorite && currentUser.favorite.length !== 0 &&
             currentUser.favorite.map((f) => (
               <div className=" mb-5 product-card">
                 <div className="product-card--wrapper">

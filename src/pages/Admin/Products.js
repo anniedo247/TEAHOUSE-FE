@@ -44,11 +44,11 @@ const Products = () => {
 
   return (
     <div className="mt-5 text-center w-75">
-      {loading ? (
+      {/* {loading ? (
         <div style={{padding:"40px"}} className="d-flex justify-content-center align-items-center">
           <img style={{width:"60px"}} loading={true} className="loaderImage" src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"/>
         </div>
-      ) : (
+      ) : ( */}
       <>
       <Container>
         <div className="text-left">
@@ -122,8 +122,7 @@ const Products = () => {
       </Container>
       <PaginationBar pageNum={pageNum} setPageNum={setPageNum} totalPages={totalPages}/>
       </>
-      )}
-  
+     
     </div>
   );
 };
