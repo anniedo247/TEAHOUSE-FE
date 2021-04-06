@@ -30,7 +30,7 @@ const TestimonialsCarousel = () => {
     },
   ];
   return (
-    <div>
+    <div >
       <Slider autoplay={3000}>
         {content.map((item, index) => (
           <div

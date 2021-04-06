@@ -685,8 +685,8 @@ figure.snip1256 {
   overflow: hidden;
   margin: 10px;
   /* min-width: 220px; */
-  max-width: 450px;
-  max-height: 350px;
+  max-width: 360px;
+  max-height: 400px;
   width: 100%;
   color: #ffffff;
   text-align: left;
@@ -807,8 +807,8 @@ figure.snip1256.hover figcaption {
   font-family: "Raleway", Arial, sans-serif;
   position: relative;
   margin: 10px;
-  min-width: 420px -60px;
-  max-width: 420px;
+  min-width: px -60px;
+  max-width: 360px;
   width: 100%;
   color: #ffffff;
   text-align: left;

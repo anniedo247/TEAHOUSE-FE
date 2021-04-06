@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container, Table,Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import Moment from "react-moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,7 @@ import { faTrashAlt, faEye } from "@fortawesome/free-solid-svg-icons";
 
 import orderActions from "../../redux/actions/order.actions";
 import PaginationBar from "../../components/PaginationBar";
+import { date } from "yup/lib/locale";
 
 const OnlineOrders = ({ history }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ const OnlineOrders = ({ history }) => {
         </div>
       ) : (
       <Container>
+        <Row>
+          <input type="date" />
+        </Row>
         <Table bordered hover className="order-table">
           <thead>
             <tr

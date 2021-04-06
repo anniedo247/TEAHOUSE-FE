@@ -10,7 +10,7 @@ const Carousel = () => {
         "https://res.cloudinary.com/dbxawxez9/image/upload/v1617119784/teaHouse/photo-1508533524178-76d7d51eb437_u54yfw.jpg",
       title: "THIS IS TEALICIOUS",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore. magna aliqua. Ut enim ad minim veniam.",
+        "We offer only full leaf teas dried by the sun with love and care. Full leaf teas, select herbs, real fruit pieces, essential oils and all natural flavors. Never tea fanning's and dust.",
     },
     {
       image:
@@ -22,10 +22,10 @@ const Carousel = () => {
 
     {
       image:
-        "https://res.cloudinary.com/dbxawxez9/image/upload/v1617121845/teaHouse/photo-1610643625267-aee6dae3ca22_uuyjqe.png",
+        "https://res.cloudinary.com/dbxawxez9/image/upload/v1617691832/teaHouse/photo-1579042400781-10af46e0d081_bc1py3.jpg",
       title: "LOVELY HEALTHY HERBS",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore. magna aliqua. Ut enim ad minim veniam.",
+        "Herbal teas have been in the public eye as a typical tea and not a tisane for centuries. Tisanes are a beverage that is both caffeine free and made without any traditional tea leaves. Instead, they contain fresh or dried flowers, leaves, fruits, seeds and/or herbs that are steeped in boiling water.",
     },
   ];
   return (
@@ -38,8 +38,8 @@ const Carousel = () => {
               background: `url('${item.image}') no-repeat center center`
             }}
           >
-            <div className="w3-container w3-center w3-animate-zoom ">
-              <Container style={{width:"50%",marginLeft:"0", marginTop:"200px"}}>
+            <div className="w3-container text-center w3-animate-zoom ">
+              <Container style={{width:"50%", marginTop:"200px",marginLeft:"40px"}}>
               <h1>{item.title}</h1>
               <p>{item.description}</p>
               </Container>

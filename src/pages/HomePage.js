@@ -26,9 +26,9 @@ const HomePage = () => {
   return (
     <div>
       <Carousel />
-      <Container style={{minHeight:"80vh"}} fluid className="mt-5">
+      <Container style={{ minHeight: "80vh" }} className="mt-5">
         <Row className="d-flex justify-content-center">
-          <figure class="snip1256">
+          <figure xl={4} class="snip1256">
             <img
               src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617158230/teaHouse/phuong-nguyen-DgW9B48pRb4-unsplash_xzhhks.jpg"
               alt="sample42"
@@ -36,17 +36,16 @@ const HomePage = () => {
             <figcaption>
               <h3>our drinks</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut.
+                A good cup of tea can leave us reminiscing about the taste. And
+                we at TeaHouse believe that a good cup of tea will leave you
+                surprised, delighted and craving for more.
               </p>
               <Link to="/drink" class="read-more">
                 Shop now
               </Link>
             </figcaption>
           </figure>
-          <figure class="snip1256">
+          <figure xl={4} class="snip1256">
             <img
               src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617158235/teaHouse/magic-mind-ErZb6GIpDj0-unsplash_hswg5k.jpg"
               alt="sample22"
@@ -54,17 +53,16 @@ const HomePage = () => {
             <figcaption>
               <h3>our tea</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                We offer only full leaf teas dried by the sun with love and
+                care. Full leaf teas, select herbs, real fruit pieces, essential
+                oils and all natural flavors. Never tea fanning's and dust.
               </p>
               <Link to="/tea" class="read-more">
                 Shop now
               </Link>
             </figcaption>
           </figure>
-          <figure class="snip1256">
+          <figure xl={4} class="snip1256">
             <img
               src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617158226/teaHouse/photo-1565802700195-01f42888e294_fhhqg3.jpg"
               alt="sample20"
@@ -72,9 +70,10 @@ const HomePage = () => {
             <figcaption>
               <h3>Our Gift Set</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut
-                enim ad minim veniam, quis nostrud exercitation.
+                Whether you need a special present for a tea lover, or you'd
+                like to introduce someone to our extraordinary tea, our gifts
+                are the perfect choice. Beautifully packaged and ready to ship,
+                TeaHouse gifts can be sent directly to the recipient.
               </p>
               <Link to="/gift" class="read-more">
                 Shop now
@@ -83,9 +82,9 @@ const HomePage = () => {
           </figure>
         </Row>
         <Row className="mt-5">
-          <Col xl={6} >
+          <Col xl={6}>
             <img
-             style={{ width: "100%" }}
+              style={{ width: "100%" }}
               src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617338577/teaHouse/lotus_1_d6aqx3.png"
             />
           </Col>
@@ -104,7 +103,7 @@ const HomePage = () => {
             <p
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: "1.7rem",
+                fontSize: "1.3rem",
                 fontWeight: "400",
                 marginTop: "20px",
                 marginLeft: "20px",
@@ -136,14 +135,17 @@ const HomePage = () => {
             <p
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: "1.7rem",
+                fontSize: "1.3rem",
                 fontWeight: "400",
                 marginTop: "20px",
                 marginLeft: "20px",
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
+              You’ll want to visit TeaHouse to enjoy a cup of
+              tea and the lovely atmosphere. It’s a peaceful place with colorful
+              murals on the walls, comfortable seating, and the cutest decor.
+              Plus the staff members are super friendly and if you’re lucky they
+              may even play you a tune or two on the guitar!
             </p>
           </Col>
           <Col xl={6}>

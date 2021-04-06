@@ -13,7 +13,8 @@ const AboutUsPage = () => {
       >
         <span className="header-title">ABOUT US</span>
       </Container>
-      <Container fluid style={{ minHeight: "400px" }}>
+      <Container  style={{ minHeight: "400px"}}>
+      <Container >
         <Row className="justify-content-center">
           <div className="text-center">
             <Container className="d-flex justify-content-center"><p
@@ -34,7 +35,7 @@ const AboutUsPage = () => {
         <Row style={{ marginTop: "60px" }}>
           <Col xl={6}>
             <img
-              style={{ maxWidth: "720px" }}
+              style={{ maxWidth: "530px" }}
               src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617290690/teaHouse/photo-1597318181409-cf64d0b5d8a2_w0bl66.jpg"
             />
           </Col>
@@ -46,7 +47,7 @@ const AboutUsPage = () => {
                 fontWeight: "600",
                 lineHeight: "29px",
                 textAlign: "center",
-                marginTop: "100px",
+                marginTop: "50px",
               }}
             >
               OUR PHILOSOPHY
@@ -78,7 +79,7 @@ const AboutUsPage = () => {
                 fontWeight: "600",
                 lineHeight: "29px",
                 textAlign: "center",
-                marginTop: "100px",
+                marginTop: "50px",
               }}
             >
               OUR PEOPLE
@@ -100,7 +101,7 @@ const AboutUsPage = () => {
           </Col>
           <Col xl={6}>
             <img
-              style={{ maxWidth: "720px" }}
+              style={{ maxWidth: "530px" }}
               src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617291302/teaHouse/40221137_2181061488834532_3426571848446377984_n_1537345088_vvln55.jpg"
             />
           </Col>
@@ -205,6 +206,8 @@ const AboutUsPage = () => {
           />
         </Carousel>
       </Container>
+      </Container>
+      
     </div>
   );
 };
