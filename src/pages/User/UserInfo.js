@@ -18,11 +18,22 @@ const UserInfo = () => {
   const [editable, setEditable] = useState(false);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    name: currentUser.name,
-    email: currentUser.email,
-    avatarUrl: currentUser.avatarUrl,
+    name: "",
+    email: "",
+    avatarUrl: "",
   });
 
+  useEffect(()=>{
+    if (currentUser) {
+      setFormData((formData) => ({
+        ...formData,
+        name: currentUser.name,
+        email: currentUser.email,
+        avatarUrl: currentUser.avatarUrl,
+      }));
+    }
+  },[currentUser])
+  
   const handleSubmit = () => {
     const { name, avatarUrl } = formData;
     dispatch(authActions.updateProfile(name, avatarUrl));
@@ -57,156 +68,178 @@ const UserInfo = () => {
 
   return (
     <div className="mt-5 text-center w-75">
-      <Container>
-        <Row>
-          <div className="w-100">
-            <h1
-              style={{
-                fontFamily: "'Roboto Condensed', sans-serif",
-                letterSpacing: "0.15em",
-                
-              }}
-            >
-              {" "}
-              MY PROFILE
-            </h1>
-            
-
-            <Button
-              className="create-product-btn mt-5 mb-5"
-              // style={{marginRight:0}}
-              onClick={() => setEditable(true)}
-            >
-              <FontAwesomeIcon icon={faEdit} />
-              EDIT
-            </Button>
-          </div>
-        </Row>
-
-        <Row>
-          <Col md={{ span: 8, offset: 2 }}>
-            {loading ? (
-              <h4>Loading...</h4>
-            ) : (
-              <Form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSubmit();
+      {loading ? (
+        <div
+          style={{ padding: "40px" }}
+          className="d-flex justify-content-center align-items-center"
+        >
+          <img
+            style={{ width: "60px" }}
+            loading={true}
+            className="loaderImage"
+            src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"
+          />
+        </div>
+      ) : (
+        <Container>
+          <Row>
+            <div className="w-100">
+              <h1
+                style={{
+                  fontFamily: "'Roboto Condensed', sans-serif",
+                  letterSpacing: "0.15em",
                 }}
               >
-                <Form.Group>
-                  {formData.avatarUrl && (
-                    <img
-                      className="avatar_pf"
-                      src={formData.avatarUrl}
-                      alt="avatarUrl"
-                    />
-                  )}
-                </Form.Group>
-                <Button
-                  className="mb-4 edit-avatar-product-bt"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    uploadWidget();
-                  }}
-                  disabled={!editable}
-                >
-                  EDIT AVATAR
-                </Button>
-                <Form.Group as={Row}>
-                  <Form.Label
-                    style={{
-                      fontFamily: "'Roboto Condensed', sans-serif",
-                      letterSpacing: "0.15em",
-                    }}
-                    column
-                    sm="2"
-                  >
-                    NAME
-                  </Form.Label>
-                  <Col sm="10">
-                    <Form.Control
-                      style={{
-                        fontFamily: "'EB Garamond', serif",
-                        letterSpacing: "0.05em",
-                      }}
-                      className="form-input"
-                      type="text"
-                      required
-                      name="name"
-                      value={formData?.name}
-                      onChange={onChange}
-                      disabled={!editable}
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row}>
-                  <Form.Label
-                    style={{
-                      fontFamily: "'Roboto Condensed', sans-serif",
-                      letterSpacing: "0.15em",
-                    }}
-                    column
-                    sm="2"
-                  >
-                    EMAIL
-                  </Form.Label>
-                  <Col sm="10">
-                    <Form.Control
-                      style={{
-                        fontFamily: "'EB Garamond', serif",
-                        letterSpacing: "0.05em",
-                      }}
-                      className="form-input"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={onChange}
-                      disabled={true}
-                    />
-                  </Col>
-                </Form.Group>
+                {" "}
+                MY PROFILE
+              </h1>
 
-                {editable && (
-                  <ButtonGroup className="d-flex mb-3">
-                    {loading ? (
-                      <Button
-                        className="mr-3"
-                        variant="primary"
-                        type="button"
-                        disabled
-                      >
-                        <span
-                          className="spinner-border spinner-border-sm"
-                          role="status"
-                          aria-hidden="true"
-                        ></span>
-                        Submitting...
-                      </Button>
-                    ) : (
-                      <Button
-                        className="mx-3 w-25 create-product-btn"
-                        type="submit"
-                        variant="primary"
-                      >
-                        Submit
-                      </Button>
+              <Button
+                className="create-product-btn mt-5 mb-5"
+                // style={{marginRight:0}}
+                onClick={() => setEditable(true)}
+              >
+                <FontAwesomeIcon icon={faEdit} />
+                EDIT
+              </Button>
+            </div>
+          </Row>
+
+          <Row>
+            <Col md={{ span: 8, offset: 2 }}>
+              {loading ? (
+                 <div
+                 style={{ padding: "40px" }}
+                 className="d-flex justify-content-center align-items-center"
+               >
+                 <img
+                   style={{ width: "60px" }}
+                   loading={true}
+                   className="loaderImage"
+                   src="https://res.cloudinary.com/dbxawxez9/image/upload/v1617273759/teaHouse/logo-removebg-preview_1_etgr6b.png"
+                 />
+               </div>
+              ) : (
+                <Form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSubmit();
+                  }}
+                >
+                  <Form.Group>
+                    {!loading && currentUser && formData.avatarUrl && (
+                      <img
+                        className="avatar_pf"
+                        src={formData.avatarUrl}
+                        alt="avatarUrl"
+                      />
                     )}
-                    <Button
-                      className="mx-3 w-25"
-                      variant="light"
-                      onClick={handleCancel}
-                      disabled={loading}
+                  </Form.Group>
+                  <Button
+                    className="mb-4 edit-avatar-product-bt"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      uploadWidget();
+                    }}
+                    disabled={!editable}
+                  >
+                    EDIT AVATAR
+                  </Button>
+                  <Form.Group as={Row}>
+                    <Form.Label
+                      style={{
+                        fontFamily: "'Roboto Condensed', sans-serif",
+                        letterSpacing: "0.15em",
+                      }}
+                      column
+                      sm="2"
                     >
-                      Cancel
-                    </Button>
-                  </ButtonGroup>
-                )}
-              </Form>
-            )}
-          </Col>
-        </Row>
-      </Container>
+                      NAME
+                    </Form.Label>
+                    <Col sm="10">
+                      <Form.Control
+                        style={{
+                          fontFamily: "'EB Garamond', serif",
+                          letterSpacing: "0.05em",
+                        }}
+                        className="form-input"
+                        type="text"
+                        required
+                        name="name"
+                        value={formData?.name}
+                        onChange={onChange}
+                        disabled={!editable}
+                      />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row}>
+                    <Form.Label
+                      style={{
+                        fontFamily: "'Roboto Condensed', sans-serif",
+                        letterSpacing: "0.15em",
+                      }}
+                      column
+                      sm="2"
+                    >
+                      EMAIL
+                    </Form.Label>
+                    <Col sm="10">
+                      <Form.Control
+                        style={{
+                          fontFamily: "'EB Garamond', serif",
+                          letterSpacing: "0.05em",
+                        }}
+                        className="form-input"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={onChange}
+                        disabled={true}
+                      />
+                    </Col>
+                  </Form.Group>
+
+                  {editable && (
+                    <ButtonGroup className="d-flex mb-3">
+                      {loading ? (
+                        <Button
+                          className="mr-3"
+                          variant="primary"
+                          type="button"
+                          disabled
+                        >
+                          <span
+                            className="spinner-border spinner-border-sm"
+                            role="status"
+                            aria-hidden="true"
+                          ></span>
+                          Submitting...
+                        </Button>
+                      ) : (
+                        <Button
+                          className="mx-3 w-25 create-product-btn"
+                          type="submit"
+                          variant="primary"
+                        >
+                          Submit
+                        </Button>
+                      )}
+                      <Button
+                        className="mx-3 w-25"
+                        variant="light"
+                        onClick={handleCancel}
+                        disabled={loading}
+                      >
+                        Cancel
+                      </Button>
+                    </ButtonGroup>
+                  )}
+                </Form>
+              )}
+            </Col>
+          </Row>
+        </Container>
+      )}
     </div>
   );
 };
