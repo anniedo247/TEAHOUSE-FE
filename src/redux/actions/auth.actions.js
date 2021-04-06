@@ -52,6 +52,7 @@ const updateProfile = (name, avatarUrl) => async (dispatch) => {
       type: types.UPDATE_CURRENT_USER_PROFILE_SUCCESS,
       payload: res.data.data,
     });
+    dispatch(getCurrentUser())
     toast.success(`Your profile has been updated.`);
   } catch (error) {
     dispatch({

@@ -127,7 +127,7 @@ const UserInfo = () => {
                   }}
                 >
                   <Form.Group>
-                    {!loading && currentUser && formData.avatarUrl && (
+                    {formData.avatarUrl && (
                       <img
                         className="avatar_pf"
                         src={formData.avatarUrl}
