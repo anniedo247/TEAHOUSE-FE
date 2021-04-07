@@ -32,7 +32,7 @@ const UserFavorite = () => {
         </div>
       ) : (
         <>
-      <Container>
+      <Container style={{minHeight:"80vh"}}>
         <Row>
           <div className="w-100">
             <h1
@@ -46,8 +46,8 @@ const UserFavorite = () => {
             </h1>
           </div>
         </Row>
-        <Row className="mt-5">
-          <Container className="w-75">
+        <Row className="mt-5 d-flex justify-content-center">
+         
           {!loading && currentUser &&
             currentUser.favorite && currentUser.favorite.length !== 0 &&
             currentUser.favorite.map((f) => (
@@ -85,7 +85,7 @@ const UserFavorite = () => {
                 </p>
               </div>
             ))}
-          </Container>
+     
          
         </Row>
       </Container>
