@@ -33,9 +33,7 @@ const OnlineOrders = ({ history }) => {
         </div>
       ) : (
       <Container>
-        <Row>
-          <input type="date" />
-        </Row>
+        
         <Table bordered hover className="order-table">
           <thead>
             <tr
